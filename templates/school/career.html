@@ -1,0 +1,805 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career & Community | Saraswoti English Boarding School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7ff;
+color:#1e293b;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+    position:fixed;
+    top:0;
+    left:0;        /* ADD THIS */
+    right:0;       /* ADD THIS */
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 8%;
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo img{
+width:45px;
+height:45px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+/* ================= SECTION ================= */
+
+section{
+padding:140px 8%;
+position:relative;
+}
+
+/* ================= CAREER SECTION ================= */
+
+.career-section{
+background:url("{% static 'images/groupphoto.jpeg' %}") center/cover no-repeat;
+color:white;
+position:relative;
+}
+
+.career-section::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+z-index:0;
+}
+
+.career-box{
+position:relative;
+z-index:2;
+max-width:900px;
+margin:auto;
+text-align:center;
+padding:60px;
+border-radius:30px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+box-shadow:0 25px 70px rgba(0,0,0,0.4);
+}
+
+.career-box h3{
+font-size:44px;
+font-weight:900;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ffffff,#c4b5fd);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.career-box p{
+font-size:18px;
+line-height:1.8;
+opacity:0.95;
+max-width:750px;
+margin:auto;
+}
+
+.btn{
+padding:14px 40px;
+border:none;
+border-radius:50px;
+background:white;
+color:#1e3a8a;
+margin-top:35px;
+cursor:pointer;
+font-weight:700;
+font-size:15px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-6px);
+background:#c4b5fd;
+}
+
+/* ================= MESSAGE SECTIONS ================= */
+
+.message-section{
+background:url("{% static 'images/messagebg.jpg' %}") center/cover no-repeat;
+color:white;
+position:relative;
+}
+
+.message-section::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+z-index:0;
+}
+
+.section-title{
+position:relative;
+z-index:2;
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h2{
+font-size:44px;
+font-weight:900;
+background:linear-gradient(90deg,#ffffff,#93c5fd,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.message-grid{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.message-grid img{
+width:100%;
+height:450px;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 25px 70px rgba(0,0,0,0.5);
+}
+
+.message-text p{
+line-height:1.9;
+color:#e2e8f0;
+margin-bottom:18px;
+}
+
+
+
+
+/* ================= MESSAGE SECTION MOBILE FIX ================= */
+/* ================= PROPER MOBILE MESSAGE FIX ================= */
+/* ================= FINAL MOBILE MESSAGE FIX ================= */
+
+@media (max-width: 768px){
+
+.message-section{
+    padding:70px 20px !important;
+}
+
+/* Title */
+.section-title h2{
+    font-size:30px;
+    text-align:center;
+}
+
+/* Stack layout */
+.message-grid{
+    display:flex;
+    flex-direction:column;
+    align-items:center;  /* center children */
+    gap:30px;
+}
+
+/* FORCE image container center */
+.message-grid > div:first-child{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Image centered */
+.message-grid img{
+    width:90%;
+    max-width:320px;
+    height:240px;
+    object-fit:cover;
+    border-radius:20px;
+    display:block;
+    margin:0 auto;   /* IMPORTANT */
+}
+
+/* Text full width */
+.message-text{
+    width:100%;
+    max-width:600px;
+    text-align:left;
+}
+
+/* Paragraph readability */
+.message-text p{
+    font-size:16px;
+    line-height:1.7;
+}
+
+}
+
+
+
+/* ================= VIDEO SECTION ================= */
+.video-section{
+position:relative;
+padding:120px 0;
+background:
+linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+url("{% static 'images/parentsmessage.jpg' %}") center/cover no-repeat;
+}
+
+/* Center video nicely */
+.video-wrapper{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+z-index:2;
+}
+
+/* Make video NOT full width */
+.video-wrapper video{
+width:80%;
+max-width:1000px;
+border-radius:20px;
+box-shadow:0 25px 60px rgba(0,0,0,0.6);
+background:black;
+}
+
+/* Overlay text */
+.video-overlay{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+text-align:center;
+color:white;
+z-index:3;
+pointer-events:none;
+width:100%;
+padding:0 20px;
+}
+
+/* ================= FACEBOOK SECTION ================= */
+.facebook-section {
+    position: relative;
+    width: 100%;
+    padding: 100px 0;
+    background: url('/static/images/cover.png') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.fb-overlay {
+    background: rgba(0, 0, 0, 0.65);  /* Dark overlay */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.facebook-section h2 {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.fb-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.fb-page,
+.fb-page span,
+.fb-page span iframe {
+    width: 100% !important;
+    max-width: 600px;
+}
+
+.google-review-section {
+    position: relative;
+    width: 100%;
+    padding: 140px 0;
+    background: url("/static/images/reviewbg.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+/* Remove heavy overlay */
+.review-overlay {
+    background: transparent;
+    padding: 0;
+}
+
+/* Make wrapper centered and clean */
+.review-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+/* ================= FINAL PREMIUM FOOTER ================= */
+
+footer{
+background:#0f172a;
+color:white;
+padding:80px 8% 40px 8%;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:2fr 1.5fr 1.5fr 2fr;
+gap:50px;
+max-width:1400px;
+margin:auto;
+}
+
+.footer-column h4{
+font-size:20px;
+margin-bottom:20px;
+font-weight:700;
+}
+
+.footer-column p,
+.footer-column a{
+color:#cbd5e1;
+text-decoration:none;
+display:block;
+margin-bottom:10px;
+font-size:15px;
+transition:0.3s;
+}
+
+.footer-column a:hover{
+color:#ffffff;
+transform:translateX(5px);
+}
+
+/* Logo Area */
+.footer-logo{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+.footer-logo-text h3{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.footer-logo-text span{
+font-size:13px;
+color:#c4b5fd;
+}
+
+/* Social */
+.footer-social{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.footer-social a{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,0.1);
+color:white;
+font-size:16px;
+transition:0.4s;
+}
+
+.footer-social a:hover{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+transform:translateY(-5px);
+}
+
+/* Map */
+.footer-map iframe{
+width:100%;
+height:200px;
+border-radius:15px;
+border:none;
+}
+
+/* Bottom */
+.footer-bottom{
+text-align:center;
+margin-top:50px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,0.1);
+color:#94a3b8;
+font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+.footer-container{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:600px){
+.footer-container{
+grid-template-columns:1fr;
+text-align:center;
+}
+.footer-social{
+justify-content:center;
+}
+.footer-logo{
+justify-content:center;
+}
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<!-- CAREER SECTION -->
+<section class="career-section">
+<div class="career-box">
+<h3>Join Our Professional Team</h3>
+<p>
+We are always looking for passionate, qualified and dedicated educators who believe in academic excellence and holistic development.
+If you are committed to shaping future leaders, inspiring young minds, and growing within a progressive academic environment, we welcome you to be part of the SEBS family.
+</p>
+<a href="{% url 'apply' %}" class="btn">Apply Now</a>
+</div>
+</section>
+
+
+
+
+
+<!-- PRINCIPAL MESSAGE -->
+<section class="message-section" style="padding:120px 8%;">
+
+<div class="section-title" style="text-align:center; margin-bottom:60px;">
+<h2 style="font-size:42px; font-weight:800; color:#1e3a8a;">
+Principal's Message
+</h2>
+</div>
+
+<div class="message-grid" style="display:grid; grid-template-columns:1fr 2fr; gap:60px; align-items:center; max-width:1200px; margin:auto;">
+
+<!-- Principal Image -->
+<div>
+<img src="{% static 'images/principal.png' %}" 
+     style="width:100%; max-width:380px; border-radius:25px; box-shadow:0 25px 60px rgba(0,0,0,0.25);">
+     
+<h4 style="margin-top:25px; font-size:20px; color:#1e3a8a; font-weight:700;">
+Suresh Thapa
+</h4>
+
+<p style="color:#64748b; font-size:15px;">
+Principal, SEBS
+</p>
+
+</div>
+
+<!-- Message Content -->
+<div class="message-text" style="line-height:1.9; color:#334155; font-size:17px;">
+
+<p style="font-weight:600; font-size:18px; color:#1e293b;">
+“Learning starts in infancy, long before formal education begins and continues throughout life.”
+</p>
+
+<p>
+I extend a warm welcome to you and your family to Saraswoti English Boarding School.
+</p>
+
+<p>
+It is my great pleasure to welcome you to Saraswoti English Boarding School. Our school is committed to providing quality education that nurtures academic excellence, creativity, values, and confidence in every child. We believe education is not only about gaining knowledge but also about developing character, imagination, and lifelong learning skills.
+</p>
+
+<p>
+At SEBS, we focus on student-centered learning through a balanced curriculum, dedicated teachers, and a safe, caring environment. We encourage creativity, critical thinking, and active participation, especially through play-based and experiential learning in the early years. The well-being and holistic development of our students remain our top priority.
+</p>
+
+<p>
+We highly value the role of parents as partners in education and believe that strong parent–teacher collaboration leads to students’ success. Together, we strive to build a vibrant learning community where every child can discover their potential and grow into a responsible and confident individual.
+</p>
+
+<p>
+Let us work together to shape a bright and meaningful future for our children.
+</p>
+
+<p style="margin-top:25px; font-style:italic; font-weight:600; color:#1e3a8a;">
+“Let noble thoughts come to us from every side.”
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- DIRECTOR MESSAGE -->
+<section class="message-section" style="padding:120px 8%;">
+
+<div class="section-title" style="text-align:center; margin-bottom:60px;">
+<h2 style="font-size:42px; font-weight:800; color:#1e3a8a;">
+Director's Message
+</h2>
+</div>
+
+<div class="message-grid" style="display:grid; grid-template-columns:1fr 2fr; gap:60px; align-items:center; max-width:1200px; margin:auto;">
+
+<!-- Director Image -->
+<div>
+<img src="{% static 'images/director.jpeg' %}" 
+     style="width:100%; max-width:380px; border-radius:25px; box-shadow:0 25px 60px rgba(0,0,0,0.25);">
+     
+<h4 style="margin-top:25px; font-size:20px; color:#1e3a8a; font-weight:700;">
+Director
+</h4>
+
+<p style="color:#64748b; font-size:15px;">
+Abinash Karki
+</p>
+
+</div>
+
+<!-- Director Message Content -->
+<div class="message-text" style="line-height:1.9; color:#334155; font-size:17px;">
+
+<p style="font-weight:600; font-size:18px; color:#1e293b;">
+“Education is the foundation upon which we build the future.”
+</p>
+
+<p>
+At Saraswoti English Boarding School, we are committed to shaping young minds with knowledge, discipline, and strong moral values. Education, for us, goes beyond textbooks — it is about preparing students for real-life challenges and global opportunities.
+</p>
+
+<p>
+We strive to create an environment that promotes innovation, responsibility, leadership, and lifelong learning. Our focus remains on nurturing confident individuals who are capable of thinking critically and contributing positively to society.
+</p>
+
+<p>
+Together with our dedicated teachers and supportive parents, we aim to develop visionary leaders who will transform the nation with integrity, wisdom, and compassion.
+</p>
+
+<p style="margin-top:25px; font-style:italic; font-weight:600; color:#1e3a8a;">
+Let us continue building a future filled with knowledge, character, and excellence.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- WHAT OUR PARENTS SAY -->
+<section class="video-section">
+<div class="video-wrapper">
+<video controls>
+<source src="{% static 'videos/parents.mp4' %}" type="video/mp4">
+</video>
+</div>
+<div class="video-overlay">
+<h2>What Our Parents Say</h2>
+<p>Hear directly from our parents about their experience with Saraswoti English Boarding School.</p>
+</div>
+</section>
+
+<!-- WHAT OUR STUDENTS SAY -->
+<section class="video-section">
+<div class="video-wrapper">
+<video controls>
+<source src="{% static 'videos/students.mp4' %}" type="video/mp4">
+</video>
+</div>
+<div class="video-overlay">
+<h2>What Our Students Say</h2>
+<p>Our students share their learning experiences, achievements and memorable moments at SEBS.</p>
+</div>
+</section>
+
+
+
+<section class="facebook-section">
+
+<div class="fb-overlay">
+    <h2>Explore Our Facebook</h2>
+
+    <div id="fb-root"></div>
+
+    <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
+    </script>
+
+    <div class="fb-wrapper">
+        <div class="fb-page"
+        data-href="https://www.facebook.com/sarswotischool"
+        data-tabs="timeline"
+        data-width="1200"
+        data-height="400"
+        data-adapt-container-width="false"
+        data-hide-cover="false"
+        data-show-facepile="true">
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+
+
+
+<section class="google-review-section">
+
+    <div class="review-overlay">
+        <h2>What People Say About Us</h2>
+
+        <div class="review-wrapper">
+            <!-- Elfsight Google Reviews -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-6e67d817-f365-4b65-84e8-9881775ddca6" 
+                 data-elfsight-app-lazy>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<!-- COLUMN 1 : Logo + School Info -->
+<div class="footer-column">
+
+<div class="footer-logo">
+<img src="{% static 'images/logo.png' %}">
+<div class="footer-logo-text">
+<h3>Saraswoti English Boarding School</h3>
+<span>Learning with love, growing with confident</span>
+</div>
+</div>
+
+<p>
+Committed to academic excellence, creativity, innovation and holistic development for every child.
+</p>
+
+</div>
+
+<!-- COLUMN 2 : Contact -->
+<div class="footer-column">
+<h4>Contact Us</h4>
+<p>Triyuga-05, Deuri, Udayapur</p>
+<p>+977 9745616314</p>
+<p>info@sebs.edu.np</p>
+</div>
+
+<!-- COLUMN 3 : Follow Us -->
+<div class="footer-column">
+<h4>Follow Us</h4>
+
+<div class="footer-social">
+<a href="https://www.facebook.com/profile.php?id=61583599393126" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.tiktok.com/" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+</div>
+
+</div>
+
+<!-- COLUMN 4 : Find Us (Google Map) -->
+<div class="footer-column footer-map">
+<h4>Find Us</h4>
+
+<iframe
+src="https://www.google.com/maps?q=Triyuga-05,Deuri,Udayapur&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Saraswoti English Boarding School | All Rights Reserved
+</div>
+
+</footer>
+
+
+
+
+
+
+
+<script>
+fetch("/google-reviews/")
+.then(response => response.json())
+.then(data => {
+const reviews = data.result.reviews.slice(0,5);
+const container = document.getElementById("google-reviews");
+
+reviews.forEach(review => {
+container.innerHTML += `
+<div class="review-card">
+<h4>${review.author_name}</h4>
+<p>⭐ ${review.rating}</p>
+<p>${review.text}</p>
+</div>`;
+});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-School Program | Saraswati Montessori</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+color:#333;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+position:relative;
+background:url("{% static 'images/preschool-hero.jpeg' %}") center/cover no-repeat;
+height:95vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+color:white;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65));
+}
+
+.hero-content{
+position:relative;
+max-width:700px;
+}
+
+.hero h1{
+font-size:60px;
+font-weight:800;
+color:#ffd27f;
+}
+
+.hero p{
+margin-top:25px;
+font-size:18px;
+line-height:1.8;
+color:#f1f1f1;
+}
+
+.admission-badge{
+display:inline-block;
+background:#ff4d4d;
+padding:8px 18px;
+border-radius:50px;
+font-size:14px;
+font-weight:600;
+margin-bottom:15px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(255,77,77,0.7);}
+70%{box-shadow:0 0 0 15px rgba(255,77,77,0);}
+100%{box-shadow:0 0 0 0 rgba(255,77,77,0);}
+}
+
+.hero-btn{
+display:inline-block;
+padding:16px 40px;
+background:#ffd27f;
+color:#000;
+font-weight:700;
+border-radius:50px;
+text-decoration:none;
+}
+
+/* ================= SECTION ================= */
+
+section{
+padding:100px 8%;
+}
+
+/* ================= MONTESSORI ================= */
+
+.montessori-section{
+text-align:center;
+}
+
+.section-title{
+font-size:42px;
+font-weight:800;
+color:#8f3a28;
+}
+
+.section-subtitle{
+max-width:800px;
+margin:20px auto 60px;
+font-size:16px;
+line-height:1.8;
+color:#555;
+}
+
+.sub-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.sub-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+transition:0.3s;
+text-align:left;
+}
+
+.sub-card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(0,0,0,0.15);
+}
+
+.sub-card img,
+.sub-card video{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.sub-card-content{
+padding:25px;
+}
+
+.sub-card h4{
+font-size:18px;
+color:#8f3a28;
+margin-bottom:10px;
+}
+
+.sub-card p{
+font-size:14px;
+line-height:1.6;
+color:#666;
+}
+
+
+
+
+/* ================= PREMIUM PROGRAMS (BG IMAGE STYLE) ================= */
+
+.programs{
+background:linear-gradient(to bottom,#f3f6fa,#e9eef4);
+padding:120px 8%;
+text-align:center;
+}
+
+.programs h2{
+font-size:52px;
+font-weight:800;
+color:#a3472e;
+margin-bottom:15px;
+}
+
+.programs .subtitle{
+max-width:750px;
+margin:0 auto 80px;
+font-size:16px;
+color:#555;
+line-height:1.7;
+}
+
+.program-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.program-card{
+position:relative;
+border-radius:35px;
+height:460px;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:40px;
+color:white;
+box-shadow:0 30px 60px rgba(0,0,0,0.2);
+transition:0.4s ease;
+background-size:cover;
+background-position:center;
+}
+
+.program-card:hover{
+transform:translateY(-12px);
+box-shadow:0 40px 80px rgba(0,0,0,0.3);
+}
+
+/* Dark overlay */
+.program-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+}
+
+.program-content{
+position:relative;
+z-index:2;
+}
+
+.program-card h3{
+font-size:26px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.age-label{
+font-size:13px;
+letter-spacing:1px;
+opacity:0.8;
+}
+
+.age-value{
+font-size:18px;
+font-weight:600;
+margin-bottom:20px;
+}
+
+.age-badge{
+width:45px;
+height:45px;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.read-btn{
+display:inline-block;
+background:white;
+color:#a3472e;
+padding:12px 28px;
+border-radius:40px;
+font-weight:600;
+font-size:14px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.read-btn:hover{
+background:#ffd27f;
+color:#000;
+}
+
+.programs{
+padding:120px 8%;
+background:#f9fafc;
+text-align:center;
+}
+
+.programs h2{
+font-size:44px;
+color:#8f3a28;
+margin-bottom:20px;
+font-weight:800;
+}
+
+.subtitle{
+max-width:700px;
+margin:0 auto 60px;
+color:#666;
+font-size:16px;
+line-height:1.7;
+}
+
+.program-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.program-card{
+position:relative;
+height:420px;
+background-size:cover;
+background-position:center;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 25px 50px rgba(0,0,0,0.15);
+transition:0.4s;
+display:flex;
+align-items:flex-end;
+}
+
+.program-card:hover{
+transform:translateY(-12px);
+box-shadow:0 35px 70px rgba(0,0,0,0.25);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+}
+
+.program-content{
+position:relative;
+color:white;
+padding:30px;
+text-align:left;
+width:100%;
+}
+
+.program-content h3{
+font-size:26px;
+margin-bottom:10px;
+font-weight:700;
+}
+
+.age-label{
+font-size:12px;
+letter-spacing:1px;
+opacity:0.8;
+}
+
+.age-value{
+font-size:15px;
+margin-bottom:15px;
+font-weight:600;
+}
+
+.age-badge{
+position:absolute;
+top:20px;
+right:20px;
+background:white;
+color:#8f3a28;
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:18px;
+}
+
+.read-btn{
+display:inline-block;
+margin-top:10px;
+background:#ffd27f;
+color:#000;
+padding:10px 22px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+font-size:13px;
+transition:0.3s;
+}
+
+.read-btn:hover{
+background:white;
+}
+
+
+
+.program-card{
+position:relative;
+height:420px;
+border-radius:25px;
+background-size:cover;
+background-position:center;
+overflow:hidden;
+display:block;
+text-decoration:none;
+color:white;
+transition:0.4s;
+}
+
+.program-card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 60px rgba(0,0,0,0.3);
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+}
+
+.program-content{
+position:absolute;
+bottom:30px;
+left:30px;
+z-index:2;
+}
+
+.read-btn{
+display:inline-block;
+margin-top:15px;
+background:#fff;
+color:#a3472e;
+padding:8px 20px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#111;
+color:#ddd;
+padding:60px 8% 20px;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-bottom:40px;
+}
+
+.footer-logo{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-logo img{
+width:60px;
+}
+
+.footer-logo-text h3{
+font-size:18px;
+color:white;
+}
+
+.footer-logo-text span{
+font-size:13px;
+color:#bbb;
+}
+
+.footer-column h4{
+margin-bottom:15px;
+color:#ffd27f;
+}
+
+.footer-column p{
+font-size:14px;
+margin-bottom:8px;
+color:#bbb;
+}
+
+.footer-social a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:40px;
+height:40px;
+background:#ffd27f;
+color:#000;
+border-radius:50%;
+margin-right:10px;
+text-decoration:none;
+}
+
+.footer-map iframe{
+width:100%;
+height:180px;
+border:none;
+border-radius:15px;
+}
+
+.footer-bottom{
+text-align:center;
+border-top:1px solid #333;
+padding-top:20px;
+font-size:13px;
+color:#aaa;
+}
+
+
+
+
+/* ================= WHY CHOOSE US SECTION ================= */
+
+.why-section{
+padding:120px 8%;
+background:#f9fbfd;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.why-left{
+flex:1;
+min-width:320px;
+}
+
+.why-small-title{
+color:#a3472e;
+font-weight:600;
+margin-bottom:15px;
+letter-spacing:1px;
+}
+
+.why-left h2{
+font-size:48px;
+font-weight:800;
+color:#8f3a28;
+margin-bottom:25px;
+line-height:1.2;
+}
+
+.why-description{
+color:#555;
+line-height:1.8;
+margin-bottom:40px;
+font-size:16px;
+max-width:600px;
+}
+
+.why-feature{
+display:flex;
+align-items:flex-start;
+gap:20px;
+margin-bottom:30px;
+}
+
+.why-icon{
+width:65px;
+height:65px;
+background:#f0e6e2;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#a3472e;
+font-size:24px;
+flex-shrink:0;
+}
+
+.why-feature h4{
+margin-bottom:8px;
+color:#333;
+font-weight:600;
+}
+
+.why-feature p{
+font-size:14px;
+color:#666;
+line-height:1.6;
+}
+
+.why-right{
+flex:1;
+min-width:320px;
+display:flex;
+justify-content:center;
+}
+
+.why-image-wrapper{
+position:relative;
+width:420px;
+height:420px;
+border-radius:60% 40% 50% 50% / 60% 50% 50% 40%;
+overflow:hidden;
+box-shadow:0 40px 80px rgba(0,0,0,0.2);
+}
+
+.why-image-wrapper img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+.why-section{
+flex-direction:column;
+text-align:center;
+}
+
+.why-feature{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.why-description{
+margin:0 auto 40px;
+}
+}
+
+
+.why-image-wrapper{
+position:relative;
+border-radius:40px;
+overflow:hidden;
+box-shadow:0 30px 60px rgba(0,0,0,0.15);
+transition:0.4s;
+}
+
+.why-image-wrapper img{
+width:100%;
+display:block;
+border-radius:40px;
+}
+
+.why-image-wrapper:hover{
+transform:translateY(-10px);
+box-shadow:0 40px 80px rgba(0,0,0,0.25);
+}
+
+
+
+
+
+/* ================= ENROLL SECTION ================= */
+
+.enroll-section{
+background:#eda553;
+padding:120px 8%;
+position:relative;
+overflow:hidden;
+}
+
+.enroll-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.enroll-map{
+flex:1;
+min-width:320px;
+}
+
+.enroll-map iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:20px;
+box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+
+.enroll-content{
+flex:1;
+min-width:320px;
+color:white;
+}
+
+.enroll-small{
+font-weight:600;
+margin-bottom:15px;
+opacity:0.9;
+}
+
+.enroll-content h2{
+font-size:48px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.enroll-content span{
+color:#8f3a28;
+}
+
+.enroll-btn{
+display:inline-block;
+margin-top:20px;
+padding:16px 40px;
+background:white;
+color:#a3472e;
+border-radius:40px;
+font-weight:600;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.enroll-btn:hover{
+background:#ffd27f;
+color:#000;
+}
+
+/* soft wave top effect */
+
+.enroll-section::before{
+content:"";
+position:absolute;
+top:-60px;
+left:0;
+width:100%;
+height:120px;
+background:white;
+border-bottom-left-radius:50% 100%;
+border-bottom-right-radius:50% 100%;
+}
+
+@media(max-width:900px){
+.enroll-container{
+flex-direction:column;
+text-align:center;
+}
+
+.enroll-content h2{
+font-size:36px;
+}
+}
+
+
+.events-preview{
+padding:120px 8%;
+background:#f7f9fc;
+text-align:center;
+}
+
+.events-preview h2{
+font-size:42px;
+color:#8f3a28;
+margin-bottom:60px;
+font-weight:800;
+}
+
+.events-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+}
+
+.event-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.event-card:hover{
+transform:translateY(-10px);
+box-shadow:0 30px 60px rgba(0,0,0,0.15);
+}
+
+.event-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.event-content{
+padding:25px;
+text-align:left;
+}
+
+.event-content h3{
+color:#8f3a28;
+margin-bottom:8px;
+}
+
+.event-date{
+font-size:13px;
+color:#999;
+margin-bottom:12px;
+}
+
+.view-btn{
+display:inline-block;
+margin-top:15px;
+color:#a3472e;
+font-weight:600;
+text-decoration:none;
+}
+
+.view-all-btn{
+display:inline-block;
+background:#a3472e;
+color:white;
+padding:14px 30px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+}
+
+
+/* ================= SCHOOL MOMENTS GALLERY ================= */
+.moments-section{
+padding:100px 8%;
+text-align:center;
+background:#f8f9fb;
+}
+
+.moments-section h2{
+font-size:42px;
+color:#a3472e;
+margin-bottom:60px;
+font-weight:800;
+}
+
+.moments-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.moment-card{
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.1);
+transition:0.4s;
+}
+
+.moment-card img{
+width:100%;
+height:250px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.moment-card:hover img{
+transform:scale(1.08);
+}
+
+
+/*========================status sections=========================*/
+
+.stats-section{
+background:linear-gradient(135deg,#a3472e,#c65a3e);
+padding:100px 8%;
+color:white;
+}
+
+.stats-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.stat-box{
+flex:1;
+min-width:220px;
+text-align:center;
+padding:30px;
+border-radius:20px;
+transition:0.4s;
+position:relative;
+}
+
+.stat-box:hover{
+transform:translateY(-12px);
+background:rgba(255,255,255,0.08);
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.stat-box i{
+font-size:32px;
+margin-bottom:15px;
+opacity:0.9;
+}
+
+.stat-box h2{
+font-size:48px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.stat-box p{
+font-size:15px;
+opacity:0.9;
+}
+
+/* Responsive */
+@media(max-width:900px){
+.stats-container{
+flex-direction:column;
+}
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<div class="admission-badge">🎓 Admission Open 2026</div>
+<h1>Pre-School Program<br>Bright Beginnings for Every Child</h1>
+<p>
+Our Montessori-based early learning environment nurtures curiosity,
+confidence and independence in children aged 3–6 years.
+</p>
+<a href="#" class="hero-btn">Apply Now</a>
+</div>
+</section>
+
+<!-- MONTESSORI SECTION -->
+<section class="montessori-section">
+<h2 class="section-title">Montessori Division (PG–UKG)</h2>
+<p class="section-subtitle">
+Our experiential Montessori framework builds literacy, numeracy,
+creativity and emotional intelligence through structured play.
+</p>
+
+<div class="sub-grid">
+<div class="sub-card">
+<img src="{% static 'images/pheonic.png' %}">
+<div class="sub-card-content">
+<h4>Phonics & Early Reading Program</h4>
+<p>Developing strong language skills.</p>
+</div>
+</div>
+
+<div class="sub-card">
+<img src="{% static 'images/sensory.jpeg' %}">
+<div class="sub-card-content">
+<h4>Sensory & Motor Skill Development</h4>
+<p>Enhancing coordination and balance.</p>
+</div>
+</div>
+
+<div class="sub-card">
+<img src="{% static 'images/arts.jpeg' %}">
+<div class="sub-card-content">
+<h4>Creative Arts & Expression</h4>
+<p>Encouraging imagination and creativity.</p>
+</div>
+</div>
+
+<div class="sub-card">
+<video controls>
+<source src="{% static 'videos/community.mp4' %}" type="video/mp4">
+</video>
+<div class="sub-card-content">
+<h4>Social Interaction & Confidence Building</h4>
+<p>Building teamwork and leadership skills.</p>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+<!-- OUR PROGRAMS -->
+<section class="programs">
+
+<h2>Our Programs</h2>
+<p class="subtitle">
+A child is like a butterfly. Some can fly higher than others,
+but each can fly the best it can!
+</p>
+
+<div class="program-grid">
+
+<!-- PLAY GROUP -->
+<div class="program-card"
+     style="background-image:url('{% static "images/Pg.jpeg" %}');">
+<div class="overlay"></div>
+<div class="program-content">
+<h3>Play Group</h3>
+<div class="age-label">AGE GROUP</div>
+<div class="age-value">18 Months Onwards</div>
+<div class="age-badge"><i class="fas fa-child"></i></div>
+<span class="read-btn">READ MORE →</span>
+</div>
+</div>
+
+<!-- NURSERY -->
+<div class="program-card"
+     style="background-image:url('{% static "images/Nursery.jpeg" %}');">
+<div class="overlay"></div>
+<div class="program-content">
+<h3>Nursery</h3>
+<div class="age-label">AGE GROUP</div>
+<div class="age-value">3 Years+</div>
+<div class="age-badge"><i class="fas fa-child"></i></div>
+<span class="read-btn">READ MORE →</span>
+</div>
+</div>
+
+<!-- JUNIOR KG -->
+<div class="program-card"
+     style="background-image:url('{% static "images/Lkg.jpeg" %}');">
+<div class="overlay"></div>
+<div class="program-content">
+<h3>Junior Kindergarten</h3>
+<div class="age-label">AGE GROUP</div>
+<div class="age-value">4 Years+</div>
+<div class="age-badge"><i class="fas fa-graduation-cap"></i></div>
+<span class="read-btn">READ MORE →</span>
+</div>
+</div>
+
+<!-- SENIOR KG -->
+<div class="program-card"
+     style="background-image:url('{% static "images/Ukg.jpeg" %}');">
+<div class="overlay"></div>
+<div class="program-content">
+<h3>Senior Kindergarten</h3>
+<div class="age-label">AGE GROUP</div>
+<div class="age-value">5 Years+</div>
+<div class="age-badge"><i class="fas fa-book"></i></div>
+<span class="read-btn">READ MORE →</span>
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+
+<!-- WHY CHOOSE US SECTION -->
+<section class="why-section">
+
+<div class="why-left">
+
+<div class="why-small-title">OUR BEST ACTIVITIES</div>
+
+<h2>Why Saraswoti Pre-School is the Ideal Beginning for Your Child</h2>
+
+<p class="why-description">
+We understand that early childhood lays the foundation for lifelong learning.
+Our nurturing environment, experienced educators, and thoughtfully designed
+learning experiences help every child grow with confidence and curiosity.
+</p>
+
+<div class="why-feature">
+<div class="why-icon"><i class="fas fa-user-graduate"></i></div>
+<div>
+<h4>Qualified Early Childhood Educators</h4>
+<p>
+Our teachers are trained in child-centered learning methods, ensuring each
+student receives personal attention and guidance.
+</p>
+</div>
+</div>
+
+<div class="why-feature">
+<div class="why-icon"><i class="fas fa-school"></i></div>
+<div>
+<h4>Safe & Stimulating Learning Spaces</h4>
+<p>
+Bright, secure classrooms designed to encourage exploration, creativity,
+and active participation.
+</p>
+</div>
+</div>
+
+<div class="why-feature">
+<div class="why-icon"><i class="fas fa-globe"></i></div>
+<div>
+<h4>Globally Inspired Curriculum</h4>
+<p>
+A balanced approach that promotes literacy, numeracy, social skills,
+and emotional development from an early stage.
+</p>
+</div>
+</div>
+
+<div class="why-feature">
+<div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+<div>
+<h4>Strong Focus on Health & Wellbeing</h4>
+<p>
+We prioritize hygiene, safety, and emotional wellbeing to create a secure
+and supportive atmosphere.
+</p>
+</div>
+</div>
+
+</div>
+
+<div class="why-right">
+<div class="why-image-wrapper">
+<img src="{% static 'images/why.jpeg' %}" 
+     alt="Happy preschool students"
+     loading="lazy">
+</div>
+</div>
+
+</section>
+
+
+
+<!-- ENROLL WITH MAP SECTION -->
+<section class="enroll-section">
+
+<div class="enroll-container">
+
+<div class="enroll-map">
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.412383908888!2d86.64646587613258!3d26.79499486513842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eec1cd53735f09%3A0x48676a9db3d4d481!2sSaraswoti%20English%20boarding%20School!5e0!3m2!1sen!2snp!4v1771554786360!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="enroll-content">
+<div class="enroll-small">Get Quality Education</div>
+
+<h2>
+Enroll Your Child in <br>
+<span>Saraswoti Montessori</span> <br>
+in Deuri-05, udayapur
+</h2>
+
+<a href="#" class="enroll-btn">Apply Now →</a>
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- EVENTS PREVIEW SECTION -->
+<section class="events-preview">
+
+<h2>Our Programs & Events</h2>
+
+<div class="events-grid">
+
+{% for event in latest_events %}
+<div class="event-card">
+
+<img src="{{ event.image1.url }}">
+
+<div class="event-content">
+<h3>{{ event.title }}</h3>
+<p class="event-date">{{ event.date }}</p>
+<p>{{ event.description|truncatewords:15 }}</p>
+
+<a href="{% url 'event_detail' event.pk %}" class="view-btn">
+View Details →
+</a>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+
+<div style="text-align:center; margin-top:40px;">
+<a href="{% url 'events' %}" class="view-all-btn">
+View All Events →
+</a>
+</div>
+
+</section>
+
+<!-- PREMIUM STATS SECTION -->
+<section class="stats-section">
+
+<div class="stats-container">
+
+<div class="stat-box">
+<i class="fas fa-award"></i>
+<h2 class="counter" data-target="32">32+</h2>
+<p>Years of Experience</p>
+</div>
+
+<div class="stat-box">
+<i class="fas fa-book-open"></i>
+<h2 class="counter" data-target="32">32+</h2>
+<p>Classes Completed</p>
+</div>
+
+<div class="stat-box">
+<i class="fas fa-user-graduate"></i>
+<h2 class="counter" data-target="15">15+</h2>
+<p>Certified Trainers</p>
+</div>
+
+<div class="stat-box">
+<i class="fas fa-users"></i>
+<h2 class="counter" data-target="2500">2500+</h2>
+<p>Students Enrolled</p>
+</div>
+
+</div>+
+
+</section>
+
+
+<!-- MOMENTS SECTION -->
+<section class="moments-section">
+
+<h2>Moments at Saraswoti Montessori</h2>
+
+<div class="moments-grid">
+
+{% for image in gallery_images %}
+<div class="moment-card">
+<img src="{{ image.image.url }}" alt="School Moment">
+</div>
+{% endfor %}
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div class="footer-column">
+<div class="footer-logo">
+<img src="{% static 'images/logo.png' %}">
+<div class="footer-logo-text">
+<h3>Saraswoti English Boarding School</h3>
+<span>Learning with Love, Growing with Confidence</span>
+</div>
+</div>
+<p>Committed to academic excellence and holistic development for every child.</p>
+</div>
+
+<div class="footer-column">
+<h4>Contact Us</h4>
+<p>Triyuga-05, Deuri, Udayapur</p>
+<p>+977 9745616314</p>
+<p>info@sebs.edu.np</p>
+</div>
+
+<div class="footer-column footer-map">
+<h4>Find Us</h4>
+<iframe src="https://www.google.com/maps?q=Triyuga-05,Deuri,Udayapur&output=embed"></iframe>
+</div>
+</div>
+
+<div class="footer-bottom">
+© 2026 Saraswoti English Boarding School | All Rights Reserved
+</div>
+</footer>
+
+</body>
+</html>

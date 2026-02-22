@@ -1,0 +1,612 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Framework | Saraswoti English Boarding School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#050816;
+color:#ffffff;
+overflow-x:hidden;
+scroll-behavior:smooth;
+}
+
+/* ========= GLOBAL GLOW BACKGROUND ========= */
+
+body::before{
+content:"";
+position:fixed;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#2563eb33,transparent 70%);
+top:-250px;
+left:-250px;
+z-index:-2;
+animation:moveGlow 12s infinite alternate ease-in-out;
+}
+
+@keyframes moveGlow{
+from{transform:translate(0,0);}
+to{transform:translate(300px,200px);}
+}
+
+/* ========= NAVBAR ========= */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(10,15,30,0.65);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:1000;
+transition:0.3s;
+}
+
+nav h3{
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(90deg,#60a5fa,#2563eb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+gap:40px;
+list-style:none;
+}
+
+nav ul li a{
+color:#ffffff;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+nav ul li a::after{
+content:"";
+position:absolute;
+bottom:-6px;
+left:0;
+width:0%;
+height:2px;
+background:#60a5fa;
+transition:0.3s;
+}
+
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* ========= HERO ========= */
+
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero .overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(180deg,rgba(5,8,22,0.6),#050816);
+z-index:-1;
+}
+
+.hero-content{
+animation:fadeUp 1.2s ease forwards;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:900;
+background:linear-gradient(90deg,#60a5fa,#3b82f6,#1d4ed8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+color:#cbd5e1;
+}
+
+/* Play Button */
+
+.play-btn{
+position:absolute;
+width:110px;
+height:110px;
+border-radius:50%;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 40px #2563eb55;
+}
+
+.play-btn:hover{
+transform:scale(1.15);
+background:#2563eb;
+}
+
+/* ========= SECTION ========= */
+
+section{
+padding:140px 8%;
+}
+
+/* ========= DIVISION ========= */
+
+.division{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+margin-bottom:150px;
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.division.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.division img{
+width:100%;
+border-radius:25px;
+box-shadow:0 40px 100px rgba(0,0,0,0.8);
+transition:0.5s;
+}
+
+.division img:hover{
+transform:scale(1.05);
+}
+
+.division-content h3{
+font-size:40px;
+margin-bottom:20px;
+color:#60a5fa;
+}
+
+.division-content p{
+color:#94a3b8;
+}
+
+/* ========= SUB CARDS ========= */
+
+.sub-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+margin-top:35px;
+}
+
+.sub-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+overflow:hidden;
+backdrop-filter:blur(20px);
+transition:0.4s;
+}
+
+.sub-card:hover{
+transform:translateY(-12px);
+box-shadow:0 30px 80px rgba(37,99,235,0.5);
+}
+
+.sub-card img,
+.sub-card video{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.sub-card h4{
+padding:20px;
+color:#e2e8f0;
+font-weight:600;
+}
+
+/* ========= PREMIUM 3D DIAMOND ========= */
+
+.gallery-3d{
+perspective:1400px;
+display:flex;
+justify-content:center;
+margin-top:80px;
+margin-bottom:80px;
+}
+
+.carousel{
+width:320px;
+height:320px;
+position:relative;
+transform-style:preserve-3d;
+animation:rotate 15s infinite linear;
+}
+
+.carousel img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 50px 120px rgba(0,0,0,0.9);
+}
+
+.carousel img:nth-child(1){transform:rotateY(0deg) translateZ(420px);}
+.carousel img:nth-child(2){transform:rotateY(90deg) translateZ(420px);}
+.carousel img:nth-child(3){transform:rotateY(180deg) translateZ(420px);}
+.carousel img:nth-child(4){transform:rotateY(270deg) translateZ(420px);}
+
+@keyframes rotate{
+from{transform:rotateY(0deg);}
+to{transform:rotateY(360deg);}
+}
+
+
+
+/* ================= FINAL PREMIUM FOOTER ================= */
+
+footer{
+background:#0f172a;
+color:white;
+padding:80px 8% 40px 8%;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:2fr 1.5fr 1.5fr 2fr;
+gap:50px;
+max-width:1400px;
+margin:auto;
+}
+
+.footer-column h4{
+font-size:20px;
+margin-bottom:20px;
+font-weight:700;
+}
+
+.footer-column p,
+.footer-column a{
+color:#cbd5e1;
+text-decoration:none;
+display:block;
+margin-bottom:10px;
+font-size:15px;
+transition:0.3s;
+}
+
+.footer-column a:hover{
+color:#ffffff;
+transform:translateX(5px);
+}
+
+/* Logo Area */
+.footer-logo{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+.footer-logo-text h3{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.footer-logo-text span{
+font-size:13px;
+color:#c4b5fd;
+}
+
+/* Social */
+.footer-social{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.footer-social a{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,0.1);
+color:white;
+font-size:16px;
+transition:0.4s;
+}
+
+.footer-social a:hover{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+transform:translateY(-5px);
+}
+
+/* Map */
+.footer-map iframe{
+width:100%;
+height:200px;
+border-radius:15px;
+border:none;
+}
+
+/* Bottom */
+.footer-bottom{
+text-align:center;
+margin-top:50px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,0.1);
+color:#94a3b8;
+font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+.footer-container{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:600px){
+.footer-container{
+grid-template-columns:1fr;
+text-align:center;
+}
+.footer-social{
+justify-content:center;
+}
+.footer-logo{
+justify-content:center;
+}
+}
+
+
+
+/* ========= ANIMATIONS ========= */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:1000px){
+.hero h1{font-size:42px;}
+.division{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h3>Saraswoti English Boarding School</h3>
+<ul>
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
+<li><a href="{% url 'academics' %}">Academics</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<video id="heroVideo" autoplay muted loop playsinline>
+<source src="{% static 'videos/school.mp4' %}" type="video/mp4">
+</video>
+<div class="overlay"></div>
+<div class="play-btn" id="playButton">▶</div>
+<div class="hero-content">
+<h1>Institutional Academic Framework</h1>
+<p>Competency-Based Curriculum | Digital Integration | Leadership Development | Global Standards</p>
+</div>
+</div>
+
+<section>
+
+<!-- Montessori -->
+<div class="division">
+<div class="division-content">
+<h3>Montessori Division (PG–UKG)</h3>
+<p>Experiential early childhood framework designed to build foundational literacy, numeracy and socio-emotional growth.</p>
+
+<div class="sub-grid">
+<div class="sub-card"><img src="{% static 'images/pheonic.png' %}"><h4>Phonics & Early Reading Program</h4></div>
+<div class="sub-card"><img src="{% static 'images/sensory.jpeg' %}"><h4>Sensory & Motor Skill Development</h4></div>
+<div class="sub-card"><img src="{% static 'images/arts.jpeg' %}"><h4>Creative Arts & Expression</h4></div>
+<div class="sub-card">
+<video controls>
+<source src="{% static 'videos/community.mp4' %}" type="video/mp4">
+</video>
+<h4>Social Interaction & Confidence Building</h4>
+</div>
+</div>
+
+</div>
+<img src="{% static 'images/montessori.jpeg' %}">
+</div>
+
+<!-- Primary -->
+<div class="division">
+<div class="division-content">
+<h3>Primary Division (Grade 1–5)</h3>
+<p>Concept-driven foundational academics combined with interactive classroom pedagogy.</p>
+
+<div class="sub-grid">
+<div class="sub-card"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80"><h4>Mathematics & Logical Thinking</h4></div>
+<div class="sub-card"><img src="{% static 'images/science.jpeg' %}"><h4>Scientific Inquiry</h4></div>
+<div class="sub-card"><img src="{% static 'images/ict.png' %}"><h4>ICT & Digital Literacy</h4></div>
+<div class="sub-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"><h4>Creative Writing & Communication</h4></div>
+</div>
+
+</div>
+<img src="{% static 'images/primary.png' %}">
+</div>
+
+<!-- Secondary -->
+<div class="division">
+<div class="division-content">
+<h3>Secondary Division (Grade 6–10)</h3>
+<p>Advanced academic preparation aligned with national standards and board readiness.</p>
+
+<div class="sub-grid">
+<div class="sub-card"><img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800"><h4>Advanced Science & Lab Work</h4></div>
+<div class="sub-card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"><h4>Research-Based Projects</h4></div>
+<div class="sub-card"><img src="https://images.pexels.com/photos/8566528/pexels-photo-8566528.jpeg?auto=compress&cs=tinysrgb&w=800"><h4>Robotics & Technology</h4></div>
+<div class="sub-card"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80"><h4>Career & Academic Guidance</h4></div>
+</div>
+
+</div>
+<img src="{% static 'images/secondary.jpeg' %}">
+</div>
+
+<div class="gallery-3d">
+<div class="carousel">
+<img src="{% static 'images/school2.jpeg' %}">
+<img src="{% static 'images/school3.jpeg' %}">
+<img src="{% static 'images/school4.jpeg' %}">
+<img src="{% static 'images/school5.jpeg' %}">
+</div>
+</div>
+
+</section>
+
+
+
+<footer>
+
+<div class="footer-container">
+
+<!-- COLUMN 1 : Logo + School Info -->
+<div class="footer-column">
+
+<div class="footer-logo">
+<img src="{% static 'images/logo.png' %}">
+<div class="footer-logo-text">
+<h3>Saraswoti English Boarding School</h3>
+<span>Learning with Love, Growing with Confidence</span>
+</div>
+</div>
+
+<p>
+Committed to academic excellence, creativity, innovation and holistic development for every child.
+</p>
+
+</div>
+
+<!-- COLUMN 2 : Contact -->
+<div class="footer-column">
+<h4>Contact Us</h4>
+<p>Triyuga-05, Deuri, Udayapur</p>
+<p>+977 9745616314</p>
+<p>info@sebs.edu.np</p>
+</div>
+
+<!-- COLUMN 3 : Follow Us -->
+<div class="footer-column">
+<h4>Follow Us</h4>
+
+<div class="footer-social">
+<a href="https://www.facebook.com/profile.php?id=61583599393126" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.tiktok.com/" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+</div>
+
+</div>
+
+<!-- COLUMN 4 : Find Us (Google Map) -->
+<div class="footer-column footer-map">
+<h4>Find Us</h4>
+
+<iframe
+src="https://www.google.com/maps?q=Triyuga-05,Deuri,Udayapur&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Saraswoti English Boarding School | All Rights Reserved
+</div>
+
+</footer>
+
+
+
+<script>
+const video = document.getElementById("heroVideo");
+const playBtn = document.getElementById("playButton");
+
+playBtn.addEventListener("click", function(){
+video.muted = false;
+video.play();
+playBtn.style.display="none";
+});
+
+const divisions=document.querySelectorAll('.division');
+window.addEventListener('scroll',()=>{
+divisions.forEach(div=>{
+if(div.getBoundingClientRect().top<window.innerHeight/1.2){
+div.classList.add('show');
+}
+});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Approach | Saraswoti Secondary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:white;
+color:#333;
+line-height:1.8;
+}
+
+/* ================= HERO SECTION ================= */
+
+.learning-hero{
+position:relative;
+min-height:600px;
+background:url("{% static 'images/learning-approach.jpeg' %}") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 8%;
+color:white;
+}
+
+.learning-hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+}
+
+.hero-content{
+position:relative;
+max-width:950px;
+}
+
+.hero-content h1{
+font-size:60px;
+font-weight:800;
+margin-bottom:30px;
+}
+
+.hero-content h1 span{
+color:#d81b60;
+}
+
+.hero-content p{
+font-size:17px;
+margin-bottom:20px;
+opacity:0.95;
+}
+
+/* ================= APPROACH SECTION ================= */
+
+.approach-section{
+padding:120px 8%;
+background:#fafafa;
+}
+
+.section-heading{
+text-align:center;
+margin-bottom:90px;
+}
+
+.section-heading h2{
+font-size:50px;
+font-weight:800;
+}
+
+.section-heading h2 span{
+color:#d81b60;
+}
+
+.section-heading p{
+max-width:850px;
+margin:20px auto 0;
+font-size:16px;
+color:#555;
+}
+
+/* ================= APPROACH ITEM ================= */
+
+.approach-item{
+display:flex;
+align-items:center;
+gap:60px;
+margin-bottom:100px;
+flex-wrap:wrap;
+transition:0.4s ease;
+}
+
+.approach-item.reverse{
+flex-direction:row-reverse;
+}
+
+.approach-image{
+flex:1;
+min-width:300px;
+}
+
+.approach-image img{
+width:100%;
+border-radius:25px;
+box-shadow:0 25px 60px rgba(0,0,0,0.15);
+transition:0.4s;
+}
+
+.approach-image img:hover{
+transform:scale(1.05);
+}
+
+.approach-content{
+flex:1;
+min-width:300px;
+}
+
+.approach-content h3{
+font-size:26px;
+margin-bottom:20px;
+color:#d81b60;
+}
+
+.approach-content p{
+color:#555;
+font-size:15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.hero-content h1{
+font-size:38px;
+}
+
+.approach-item{
+flex-direction:column !important;
+text-align:center;
+}
+
+.section-heading h2{
+font-size:36px;
+}
+
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#111;
+color:#ddd;
+padding:60px 8% 20px;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-bottom:40px;
+}
+
+.footer-logo{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-logo img{
+width:60px;
+}
+
+.footer-logo-text h3{
+font-size:18px;
+color:white;
+}
+
+.footer-logo-text span{
+font-size:13px;
+color:#bbb;
+}
+
+.footer-column h4{
+margin-bottom:15px;
+color:#ffd27f;
+}
+
+.footer-column p{
+font-size:14px;
+margin-bottom:8px;
+color:#bbb;
+}
+
+.footer-social a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+width:40px;
+height:40px;
+background:#ffd27f;
+color:#000;
+border-radius:50%;
+margin-right:10px;
+text-decoration:none;
+}
+
+.footer-map iframe{
+width:100%;
+height:180px;
+border:none;
+border-radius:15px;
+}
+
+.footer-bottom{
+text-align:center;
+border-top:1px solid #333;
+padding-top:20px;
+font-size:13px;
+color:#aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+
+<section class="learning-hero">
+<div class="hero-content">
+
+<h1><span>LEARNING</span> APPROACH</h1>
+
+<p>
+At Saraswoti Secondary School, we believe education must inspire curiosity,
+strengthen intellectual discipline and cultivate independent thinking.
+Our philosophy integrates structured curriculum delivery with interactive engagement,
+ensuring conceptual clarity and practical understanding.
+</p>
+
+<p>
+We emphasize analytical reasoning, collaborative learning and research-based exploration,
+preparing students not only for board examinations but also for higher education and lifelong success.
+</p>
+
+</div>
+</section>
+
+
+
+
+<!-- ================= APPROACH DETAILS ================= -->
+
+<section class="approach-section">
+
+<div class="section-heading">
+<h2><span>Our</span> Academic Methodologies</h2>
+<p>
+Our structured yet innovative approach ensures holistic development,
+intellectual depth and academic excellence across all secondary levels.
+Each methodology is carefully designed to enhance conceptual clarity,
+critical reasoning and long-term academic confidence.
+</p>
+</div>
+
+
+<!-- 1 -->
+<div class="approach-item">
+<div class="approach-image">
+<img src="{% static 'images/approach1.jpeg' %}" alt="Project Based Learning">
+</div>
+<div class="approach-content">
+<h3>Project-Based Learning</h3>
+<p>
+Project-Based Learning (PBL) encourages students to explore real-world
+challenges through structured academic projects. Instead of relying solely
+on textbook instruction, students collaborate in teams to research,
+analyze and present practical solutions to meaningful problems.
+This approach strengthens critical thinking, creativity and
+independent decision-making skills.
+</p>
+
+<p>
+Through guided mentorship and structured evaluation,
+students learn how to manage time effectively,
+organize research materials and communicate ideas confidently.
+Project-Based Learning fosters innovation, teamwork and
+deeper subject understanding, preparing students for
+higher academic demands and real-life problem-solving.
+</p>
+</div>
+</div>
+
+
+<!-- 2 -->
+<div class="approach-item reverse">
+<div class="approach-image">
+<img src="{% static 'images/approach2.jpeg' %}" alt="Collaborative Learning">
+</div>
+<div class="approach-content">
+<h3>Collaborative Learning</h3>
+<p>
+Collaborative learning promotes structured group engagement
+where students work together to achieve academic objectives.
+Through discussions, debates and shared research activities,
+students develop communication skills, mutual respect
+and leadership qualities.
+</p>
+
+<p>
+This method helps learners appreciate diverse perspectives,
+improve analytical reasoning and build confidence in expressing ideas.
+By working collectively, students strengthen accountability
+and develop interpersonal skills essential for
+higher education and professional environments.
+</p>
+</div>
+</div>
+
+
+<!-- 3 -->
+<div class="approach-item">
+<div class="approach-image">
+<img src="{% static 'images/career.jpg' %}" alt="Inquiry Based Learning">
+</div>
+<div class="approach-content">
+<h3>Inquiry-Based Exploration</h3>
+<p>
+Inquiry-Based Learning encourages students to question,
+investigate and explore concepts beyond surface-level understanding.
+Teachers guide students through structured inquiry cycles,
+helping them analyze data, evaluate information and
+draw logical conclusions.
+</p>
+
+<p>
+This strategy develops independent thinking, research capabilities
+and academic curiosity. Students gain confidence in asking
+meaningful questions and seeking evidence-based answers,
+leading to stronger conceptual mastery and academic maturity.
+</p>
+</div>
+</div>
+
+
+<!-- 4 -->
+<div class="approach-item reverse">
+<div class="approach-image">
+<img src="{% static 'images/creative.jpg' %}" alt="Concept Based Learning">
+</div>
+<div class="approach-content">
+<h3>Concept-Focused Mastery</h3>
+<p>
+Concept-Based Learning prioritizes deep understanding
+over memorization of facts. Students are encouraged to
+grasp the “why” and “how” behind every topic,
+ensuring meaningful academic retention.
+</p>
+
+<p>
+By connecting theoretical knowledge to real-life contexts,
+students build stronger analytical abilities and
+long-term comprehension. This method prepares learners
+for board examinations while cultivating intellectual depth
+and academic confidence.
+</p>
+</div>
+</div>
+
+
+<!-- 5 -->
+<div class="approach-item">
+<div class="approach-image">
+<img src="{% static 'images/smartclass.jpeg' %}" alt="Digital Learning">
+</div>
+<div class="approach-content">
+<h3>Digital & Technology Integration</h3>
+<p>
+Technology-enhanced classrooms integrate multimedia tools,
+interactive smart boards and digital research platforms
+to enrich the learning experience.
+Students gain essential digital literacy skills
+required for modern academic and professional environments.
+</p>
+
+<p>
+Through responsible technology usage, online research
+and structured digital presentations,
+students become adaptable learners capable of
+navigating future academic challenges confidently.
+</p>
+</div>
+</div>
+
+
+<!-- 6 -->
+<div class="approach-item reverse">
+<div class="approach-image">
+<img src="{% static 'images/approach6.jpeg' %}" alt="Experiential Learning">
+</div>
+<div class="approach-content">
+<h3>Experiential Learning</h3>
+<p>
+Experiential Learning emphasizes hands-on activities,
+laboratory experiments and applied classroom exercises
+that connect theory with practical understanding.
+Students actively participate in simulations,
+demonstrations and structured activities.
+</p>
+
+<p>
+This approach strengthens conceptual clarity,
+improves retention and enhances confidence.
+Students learn by doing, which builds academic competence
+and prepares them for higher-level analytical thinking.
+</p>
+</div>
+</div>
+
+
+<!-- 7 -->
+<div class="approach-item">
+<div class="approach-image">
+<img src="{% static 'images/mentors.jpeg' %}" alt="Mentorship">
+</div>
+<div class="approach-content">
+<h3>Academic Mentorship</h3>
+<p>
+Our structured mentorship system provides individualized guidance
+to support academic progress and personal growth.
+Teachers closely monitor student performance,
+offer academic counseling and provide constructive feedback.
+</p>
+
+<p>
+This ensures steady improvement, emotional support
+and board examination readiness.
+Mentorship fosters discipline, responsibility and
+self-confidence essential for lifelong success.
+</p>
+</div>
+</div>
+
+
+<!-- 8 -->
+<div class="approach-item reverse">
+<div class="approach-image">
+<img src="{% static 'images/excellence.jpg' %}" alt="Assessment Strategy">
+</div>
+<div class="approach-content">
+<h3>Structured Assessment Strategy</h3>
+<p>
+Continuous assessment through unit tests,
+mock examinations and performance analysis
+helps students track academic progress effectively.
+This systematic evaluation ensures early identification
+of strengths and improvement areas.
+</p>
+
+<p>
+Through structured feedback and guided revision plans,
+students build examination confidence,
+time management skills and subject mastery,
+leading to consistent academic excellence.
+</p>
+</div>
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-container">
+<div class="footer-column">
+<div class="footer-logo">
+<img src="{% static 'images/logo.png' %}">
+<div class="footer-logo-text">
+<h3>Saraswoti English Boarding School</h3>
+<span>Learning with Love, Growing with Confidence</span>
+</div>
+</div>
+<p>Committed to academic excellence and holistic development for every child.</p>
+</div>
+
+<div class="footer-column">
+<h4>Contact Us</h4>
+<p>Triyuga-05, Deuri, Udayapur</p>
+<p>+977 9745616314</p>
+<p>info@sebs.edu.np</p>
+</div>
+
+<div class="footer-column footer-map">
+<h4>Find Us</h4>
+<iframe src="https://www.google.com/maps?q=Triyuga-05,Deuri,Udayapur&output=embed"></iframe>
+</div>
+</div>
+
+<div class="footer-bottom">
+© 2026 Saraswoti English Boarding School | All Rights Reserved
+</div>
+</footer>
+
+
+
+
+</body>
+</html>

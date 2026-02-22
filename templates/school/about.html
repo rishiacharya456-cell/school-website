@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Saraswoti English Boarding School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#eef5ff,#ffffff);
+color:#1e293b;
+line-height:1.9;
+overflow-x:hidden;
+}
+
+/* Floating background shapes */
+body::before,
+body::after{
+content:"";
+position:fixed;
+border-radius:50%;
+z-index:-1;
+filter:blur(80px);
+opacity:0.3;
+}
+
+body::before{
+width:400px;
+height:400px;
+background:#2563eb;
+top:-100px;
+left:-100px;
+}
+
+body::after{
+width:500px;
+height:500px;
+background:#60a5fa;
+bottom:-150px;
+right:-150px;
+}
+
+/* NAVBAR */
+nav{
+background:linear-gradient(135deg,#0f3d91,#1e40af);
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+box-shadow:0 8px 30px rgba(0,0,0,0.2);
+}
+
+nav h3{
+font-weight:700;
+letter-spacing:1px;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#ffd700;
+}
+
+/* HERO */
+.hero{
+height:65vh;
+background:
+linear-gradient(rgba(15,61,145,0.85),rgba(30,64,175,0.85)),
+url("{% static 'images/cover.png' %}") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:52px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+/* SECTION */
+section{
+padding:120px 10%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:80px;
+}
+
+.section-title h2{
+font-size:42px;
+font-weight:800;
+background:linear-gradient(90deg,#0f3d91,#2563eb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* INTRO LAYOUT */
+.intro-container{
+display:grid;
+grid-template-columns:1.3fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.intro-text{
+background:rgba(255,255,255,0.85);
+padding:60px;
+border-radius:35px;
+box-shadow:0 30px 80px rgba(15,61,145,0.15);
+}
+
+.intro-text p{
+margin-bottom:26px;
+font-size:17px;
+color:#334155;
+}
+
+.highlight-box{
+background:linear-gradient(135deg,#e0ecff,#f0f6ff);
+padding:35px;
+border-radius:20px;
+border-left:6px solid #2563eb;
+margin:40px 0;
+font-style:italic;
+color:#0f3d91;
+}
+
+/* IMAGE */
+.intro-image img{
+width:100%;
+border-radius:35px;
+box-shadow:0 40px 90px rgba(0,0,0,0.25);
+border:10px solid white;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:100px;
+}
+
+.gallery img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:30px;
+box-shadow:0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer{
+background:linear-gradient(135deg,#0f3d91,#1e40af);
+color:white;
+text-align:center;
+padding:70px 10%;
+margin-top:120px;
+}
+
+@media(max-width:900px){
+.intro-container{
+grid-template-columns:1fr;
+}
+.hero h1{
+font-size:32px;
+}
+}
+
+
+
+
+/* ================= FINAL PREMIUM FOOTER ================= */
+
+footer{
+background:#0f172a;
+color:white;
+padding:80px 8% 40px 8%;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:2fr 1.5fr 1.5fr 2fr;
+gap:50px;
+max-width:1400px;
+margin:auto;
+}
+
+.footer-column h4{
+font-size:20px;
+margin-bottom:20px;
+font-weight:700;
+}
+
+.footer-column p,
+.footer-column a{
+color:#cbd5e1;
+text-decoration:none;
+display:block;
+margin-bottom:10px;
+font-size:15px;
+transition:0.3s;
+}
+
+.footer-column a:hover{
+color:#ffffff;
+transform:translateX(5px);
+}
+
+/* Logo Area */
+.footer-logo{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+.footer-logo-text h3{
+font-size:20px;
+margin-bottom:5px;
+}
+
+.footer-logo-text span{
+font-size:13px;
+color:#c4b5fd;
+}
+
+/* Social */
+.footer-social{
+display:flex;
+gap:15px;
+margin-top:15px;
+}
+
+.footer-social a{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,0.1);
+color:white;
+font-size:16px;
+transition:0.4s;
+}
+
+.footer-social a:hover{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+transform:translateY(-5px);
+}
+
+/* Map */
+.footer-map iframe{
+width:100%;
+height:200px;
+border-radius:15px;
+border:none;
+}
+
+/* Bottom */
+.footer-bottom{
+text-align:center;
+margin-top:50px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,0.1);
+color:#94a3b8;
+font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:992px){
+.footer-container{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:600px){
+.footer-container{
+grid-template-columns:1fr;
+text-align:center;
+}
+.footer-social{
+justify-content:center;
+}
+.footer-logo{
+justify-content:center;
+}
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h3>Saraswoti English Boarding School</h3>
+<ul>
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'about' %}">About</a></li>
+<li><a href="{% url 'admission' %}">Admission</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+<h1>About Saraswoti English Boarding School</h1>
+</div>
+
+<section>
+
+<div class="section-title">
+<h2>Introduction</h2>
+</div>
+
+<div class="intro-container">
+
+<div class="intro-text">
+
+<p><strong>Saraswoti English Boarding School (SEBS)</strong> is a leading co-educational institution dedicated to academic excellence and holistic development of students.</p>
+
+<p>With a balanced blend of modern teaching methods and proven educational practices, the school promotes all-round development—intellectual, moral, social, emotional, and physical.</p>
+
+<div class="highlight-box">
+Guided by the four pillars of education—Learning to Know, Learning to Do, Learning to Live Together, and Learning to Be—the school ensures meaningful and lifelong learning.
+</div>
+
+<p>Situated in a peaceful, green, and pollution-free environment, Saraswoti English Boarding School provides a safe and learner-friendly atmosphere.</p>
+
+<p>With well-managed infrastructure and value-based education, SEBS is an ideal choice for quality education and character building.</p>
+
+</div>
+
+<div class="intro-image">
+<img src="{% static 'images/events.png' %}" alt="School Image">
+</div>
+
+</div>
+
+<div class="section-title">
+<h2>Our School Environment</h2>
+</div>
+
+<div class="gallery">
+<img src="{% static 'images/classroom.png' %}">
+<img src="{% static 'images/playground.png' %}">
+<img src="{% static 'images/Library.png' %}">
+<img src="{% static 'images/schoolevents.png' %}">
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-container">
+
+<!-- COLUMN 1 : Logo + School Info -->
+<div class="footer-column">
+
+<div class="footer-logo">
+<img src="{% static 'images/logo.png' %}">
+<div class="footer-logo-text">
+<h3>Saraswoti English Boarding School</h3>
+<span>Learning with Love, Growing with Confidence</span>
+</div>
+</div>
+
+<p>
+Committed to academic excellence, creativity, innovation and holistic development for every child.
+</p>
+
+</div>
+
+<!-- COLUMN 2 : Contact -->
+<div class="footer-column">
+<h4>Contact Us</h4>
+<p>Triyuga-05, Deuri, Udayapur</p>
+<p>+977 9745616314</p>
+<p>info@sebs.edu.np</p>
+</div>
+
+<!-- COLUMN 3 : Follow Us -->
+<div class="footer-column">
+<h4>Follow Us</h4>
+
+<div class="footer-social">
+<a href="https://www.facebook.com/profile.php?id=61583599393126" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.tiktok.com/" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+</div>
+
+</div>
+
+<!-- COLUMN 4 : Find Us (Google Map) -->
+<div class="footer-column footer-map">
+<h4>Find Us</h4>
+
+<iframe
+src="https://www.google.com/maps?q=Triyuga-05,Deuri,Udayapur&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Saraswoti English Boarding School | All Rights Reserved
+</div>
+
+</footer>
+
+
+
+</body>
+</html>

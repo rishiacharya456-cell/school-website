@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apply Now | Saraswoti English Boarding School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+    font-family:Poppins;
+    margin:0;
+    background:url("{% static 'images/cover.png' %}") no-repeat center center/cover;
+    min-height:100vh;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(15,23,42,0.85);
+    z-index:0;
+}
+
+.container{
+    padding:80px 8%;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    text-align:center;
+    color:white;
+    margin-bottom:10px;
+    font-size:42px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:40px;
+    font-size:16px;
+}
+
+form{
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    max-width:950px;
+    margin:auto;
+    box-shadow:0 25px 60px rgba(0,0,0,0.4);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:14px;
+    transition:0.3s;
+}
+
+input:focus, select:focus, textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.2);
+    outline:none;
+}
+
+textarea{
+    grid-column:span 2;
+}
+
+.full{
+    grid-column:span 2;
+}
+
+button{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:25px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Success Message */
+.success-message{
+    background:#22c55e;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:25px;
+    font-weight:600;
+    text-align:center;
+}
+
+.note{
+    font-size:13px;
+    color:#64748b;
+    margin-top:10px;
+}
+
+.footer-note{
+    text-align:center;
+    margin-top:30px;
+    font-size:13px;
+    color:#94a3b8;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+    textarea,.full{
+        grid-column:span 1;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Apply to Join Our Professional Team</h1>
+<p class="subtitle">We welcome passionate educators and dedicated staff to be part of our growing institution.</p>
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+{% if success %}
+<div class="success-message">
+<i class="fa fa-check-circle"></i> Application submitted successfully! Our team will contact you soon.
+</div>
+{% endif %}
+
+<div class="form-grid">
+
+<input type="text" name="full_name" placeholder="Full Name" required>
+
+<select name="gender" required>
+    <option value="">Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+
+<input type="date" name="dob" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<input type="email" name="email" placeholder="Email Address" required>
+<input type="text" name="address" placeholder="Address" required>
+
+<select name="position" required>
+    <option value="">Position Applying For</option>
+    <option>Primary Teacher</option>
+    <option>Secondary Teacher</option>
+    <option>Higher Secondary Teacher</option>
+    <option>Administrative Staff</option>
+    <option>Accountant</option>
+    <option>Support Staff</option>
+</select>
+
+<input type="text" name="subject" placeholder="Subject Specialization (if applicable)">
+
+<input type="text" name="qualification" placeholder="Highest Qualification" required>
+<input type="text" name="university" placeholder="University / College" required>
+
+<input type="number" name="experience" placeholder="Years of Experience" required>
+<input type="text" name="salary" placeholder="Expected Salary">
+
+<input type="date" name="available_from">
+
+<div class="full">
+<input type="file" name="resume" required>
+<p class="note">Upload Resume (PDF preferred)</p>
+</div>
+
+<textarea name="message" rows="5" placeholder="Why do you want to join our organization?" required></textarea>
+
+</div>
+
+<button type="submit">
+<i class="fa fa-paper-plane"></i> Submit Application
+</button>
+
+<p class="footer-note">
+Saraswoti English Boarding School is an equal opportunity employer.
+</p>
+
+</form>
+
+</div>
+
+</body>
+</html>

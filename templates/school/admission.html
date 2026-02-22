@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admission Open | Saraswoti English Boarding School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+    font-family:Poppins;
+    margin:0;
+    background:url("{% static 'images/cover.png' %}") no-repeat center center/cover;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(15,23,42,0.88);
+    z-index:0;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+    position:relative;
+    z-index:2;
+    padding:140px 8% 100px 8%;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:52px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+    opacity:0.9;
+}
+
+/* ================= BLINK CTA ================= */
+
+.blink-cta{
+    margin-top:40px;
+    display:inline-block;
+    padding:18px 45px;
+    background:#000;
+    color:#fff;
+    border-radius:40px;
+    font-weight:700;
+    font-size:18px;
+    box-shadow:0 0 20px rgba(255,255,0,0.6);
+    animation:blink 1.2s infinite alternate;
+    cursor:pointer;
+}
+
+@keyframes blink{
+    from{box-shadow:0 0 10px #facc15;}
+    to{box-shadow:0 0 35px #facc15;}
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.container{
+    position:relative;
+    z-index:2;
+    padding:80px 8%;
+}
+
+.section{
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    margin-bottom:60px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+h2{
+    margin-bottom:25px;
+    color:#1e3a8a;
+    font-size:28px;
+}
+
+/* ================= FORM ================= */
+
+input, select, textarea{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:15px;
+}
+
+button{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ================= MATERIALS ================= */
+
+.download-btn{
+    display:inline-block;
+    padding:8px 20px;
+    background:#10b981;
+    color:white;
+    border-radius:20px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.result-box{
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+    border-left:5px solid #2563eb;
+}
+
+/* ================= HIDE FORM INITIALLY ================= */
+
+#admission-form{
+    display:none;
+    animation:fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:34px;
+    }
+    .section{
+        padding:30px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+
+<h1>Admission Open 2026</h1>
+<p>
+Saraswoti English Boarding School invites applications for the upcoming academic session.
+Register now for the Entrance Examination and secure your child's future.
+</p>
+
+<div class="blink-cta" onclick="openForm()">
+Click Here to Register for Entrance Exam
+</div>
+
+</div>
+
+<!-- ================= CONTENT ================= -->
+<div class="container">
+
+<!-- ================= ADMISSION FORM (HIDDEN INITIALLY) ================= -->
+<div class="section" id="admission-form">
+
+<h2>Apply for Admission</h2>
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<h3>Student Information</h3>
+<input type="text" name="student_name" placeholder="Student Name" required>
+<input type="date" name="dob" required>
+
+<select name="class_applying" required>
+<option value="">Class Applying For</option>
+{% for cls in class_list %}
+<option value="{{ cls }}">{{ cls }}</option>
+{% endfor %}
+</select>
+
+<h3>Parent Information</h3>
+<input type="text" name="parent_name" placeholder="Parent Name" required>
+<input type="email" name="parent_email" placeholder="Parent Email" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
+<textarea name="address" placeholder="Address" required></textarea>
+
+<h3>Previous School</h3>
+<input type="text" name="previous_school" placeholder="Previous School">
+
+<h3>Upload Student Photo</h3>
+<input type="file" name="photo" required>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+</div>
+
+<!-- ================= ENTRANCE PREPARATION ================= -->
+<div class="section" id="preparation">
+
+<h2>Entrance Preparation Materials</h2>
+
+<form method="GET" action="#preparation">
+<select name="class" onchange="this.form.submit()">
+<option value="">Select Class</option>
+
+{% for cls in class_list %}
+<option value="{{ cls }}" {% if request.GET.class == cls %}selected{% endif %}>
+{{ cls }}
+</option>
+{% endfor %}
+
+</select>
+</form>
+
+{% if materials %}
+    {% for item in materials %}
+        <div class="result-box">
+            <strong>{{ item.subject }} - {{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+            <a href="{{ item.file.url }}" class="download-btn" download>Download PDF</a>
+        </div>
+    {% endfor %}
+{% elif request.GET.class %}
+        <div class="result-box">
+            No materials uploaded for this class yet.
+        </div>
+{% endif %}
+
+</div>
+
+<!-- ================= CHECK RESULT ================= -->
+<div class="section" id="result">
+
+<h2>Check Entrance Result</h2>
+
+<form method="GET" action="#result">
+<input type="text" name="student_name" placeholder="Enter Student Name" required>
+<input type="date" name="dob" required>
+<button type="submit">Check Result</button>
+</form>
+
+{% if result %}
+<div class="result-box">
+<strong>Student Name:</strong> {{ result.student_name }} <br>
+<strong>Class Applied:</strong> {{ result.class_applying }} <br>
+<strong>Status:</strong> {{ result.result_status }} <br>
+<strong>Marks:</strong> {{ result.marks_obtained }} <br>
+<strong>Remarks:</strong> {{ result.remarks }}
+</div>
+{% endif %}
+
+</div>
+
+</div>
+
+<script>
+function openForm(){
+    var form = document.getElementById("admission-form");
+    form.style.display = "block";
+    form.scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>

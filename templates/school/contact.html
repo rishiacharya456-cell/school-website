@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact | Saraswoti English Boarding School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+    font-family:Poppins;
+    margin:0;
+    min-height:100vh;
+    background:url("{% static 'images/cover.png' %}") no-repeat center center/cover;
+    position:relative;
+}
+
+/* Dark Overlay */
+body::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(15,23,42,0.75);
+    z-index:0;
+}
+
+/* NAV */
+nav{
+    padding:20px 8%;
+    position:relative;
+    z-index:2;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+nav a:hover{
+    letter-spacing:1px;
+}
+
+/* MAIN CONTAINER */
+.container{
+    padding:80px 10%;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.container h1{
+    color:white;
+    font-size:44px;
+    margin-bottom:40px;
+    font-weight:700;
+    background:linear-gradient(45deg,#ffffff,#c4b5fd);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* FORM CARD */
+form{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    padding:50px;
+    border-radius:25px;
+    max-width:600px;
+    margin:auto;
+    box-shadow:0 25px 60px rgba(0,0,0,0.4);
+    animation:fadeIn 1s ease-in-out;
+}
+
+input, textarea{
+    width:100%;
+    padding:15px;
+    margin:15px 0;
+    border-radius:12px;
+    border:none;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus, textarea:focus{
+    box-shadow:0 0 0 3px rgba(124,58,237,0.5);
+}
+
+/* BUTTON */
+button{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    margin-top:10px;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* SUCCESS MESSAGE */
+.success-message{
+    background:#22c55e;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-weight:600;
+    animation:fadeIn 0.5s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Responsive */
+@media(max-width:768px){
+    form{
+        padding:30px;
+    }
+    .container h1{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="{% url 'home' %}">
+<i class="fa fa-arrow-left"></i> Back to Home
+</a>
+</nav>
+
+<div class="container">
+
+<h1>Contact Us</h1>
+
+<form method="POST">
+{% csrf_token %}
+
+{% if success %}
+<div class="success-message">
+<i class="fa fa-check-circle"></i> Your message has been sent successfully!
+</div>
+{% endif %}
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea rows="5" name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">
+<i class="fa fa-paper-plane"></i> Send Message
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

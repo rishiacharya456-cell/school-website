@@ -1,0 +1,32 @@
+{% load static %}
+<section class="events-section">
+
+<h2>Our Programs & Events</h2>
+
+<div class="events-grid">
+
+{% for event in events %}
+<div class="event-card">
+
+<div class="event-image">
+<img src="{{ event.image1.url }}">
+</div>
+
+<div class="event-content">
+<h3>{{ event.title }}</h3>
+<p class="event-date">{{ event.date }}</p>
+<p class="event-desc">
+{{ event.description|truncatewords:20 }}
+</p>
+
+<a href="{% url 'event_detail' event.pk %}" class="view-btn">
+View Details →
+</a>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+
+</section>

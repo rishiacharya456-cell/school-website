@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}Saraswoti English Boarding School Admin{% endblock %}
+
+{% block branding %}
+<style>
+/* ===== CUSTOM ADMIN HEADER ===== */
+#header {
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(12px);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+#branding h1 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+#branding h1 img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+#branding h1 span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Footer */
+.custom-footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+</style>
+
+<h1>
+    <img src="{% static 'images/logo.png' %}" alt="Logo">
+    <div>
+        Saraswoti English Boarding School
+        <span>सदैव समुदायसँग, सबै समुदायसँग</span>
+    </div>
+</h1>
+
+{% endblock %}
+
+{% block footer %}
+<div class="custom-footer">
+    © 2026 Saraswoti English Boarding School | Admin Panel
+</div>
+{% endblock %}

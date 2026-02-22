@@ -1,0 +1,20 @@
+<section class="event-detail">
+
+<h2>{{ event.title }}</h2>
+<p class="event-date">{{ event.date }}</p>
+
+<div class="event-images">
+<img src="{{ event.image1.url }}">
+{% if event.image2 %}
+<img src="{{ event.image2.url }}">
+{% endif %}
+{% if event.image3 %}
+<img src="{{ event.image3.url }}">
+{% endif %}
+</div>
+
+<p class="event-full-desc">
+{{ event.description }}
+</p>
+
+</section>

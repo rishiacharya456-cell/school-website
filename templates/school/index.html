@@ -1,0 +1,1226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saraswoti English Boarding School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+color:#1e293b;
+background:
+radial-gradient(circle at 20% 20%, #eef4ff 0%, transparent 40%),
+radial-gradient(circle at 80% 80%, #e0e7ff 0%, transparent 40%),
+linear-gradient(to bottom,#f8fafc,#eef4ff,#f8fafc);
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 8%;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(12px);
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+color:white;
+}
+
+.logo img{
+width:46px;
+height:46px;
+border-radius:50%;
+background:white;
+padding:4px;
+}
+
+.slogan{
+font-size:12px;
+opacity:0.9;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#93c5fd;
+}
+
+/* ================= MOBILE NAVBAR FIX ================= */
+/* ================= CLEAN MOBILE NAVBAR ================= */
+
+@media (max-width: 768px){
+
+nav{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:15px 5%;
+    position:relative;   /* IMPORTANT: remove fixed behavior on mobile */
+}
+
+/* Stack logo */
+.logo{
+    width:100%;
+    margin-bottom:10px;
+}
+
+/* Make menu visible and horizontal wrap */
+nav ul{
+    display:flex !important;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    width:100%;
+    padding:10px 0;
+}
+
+/* Menu items */
+nav ul li{
+    list-style:none;
+}
+
+nav ul li a{
+    font-size:14px;
+    padding:6px 10px;
+    white-space:nowrap;
+}
+
+/* Hide hamburger completely */
+.menu-toggle{
+    display:none;
+}
+
+}
+
+
+/* ================= HERO SLIDER ================= */
+
+.hero{
+height:100vh;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 8%;
+color:white;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:slideShow 30s infinite;
+}
+
+.slide:nth-child(1){background-image:url("{% static 'images/groupphoto.jpeg' %}");animation-delay:0s;}
+.slide:nth-child(2){background-image:url("{% static 'images/school10.jpeg' %}");animation-delay:6s;}
+.slide:nth-child(3){background-image:url("{% static 'images/school11.jpeg' %}");animation-delay:12s;}
+.slide:nth-child(4){background-image:url("{% static 'images/school12.jpeg' %}");animation-delay:18s;}
+.slide:nth-child(5){background-image:url("{% static 'images/school8.jpeg' %}");animation-delay:24s;}
+
+@keyframes slideShow{
+0%{opacity:0; transform:scale(1);}
+5%{opacity:1;}
+20%{opacity:1; transform:scale(1.05);}
+25%{opacity:0;}
+100%{opacity:0;}
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:850px;
+}
+
+.hero-content h1{
+font-size:60px;
+font-weight:900;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ffffff,#93c5fd);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.btn{
+padding:14px 34px;
+border-radius:50px;
+border:none;
+font-weight:600;
+cursor:pointer;
+margin:0 12px;
+transition:0.3s;
+}
+
+.btn-primary{
+background:white;
+color:#1e3a8a;
+}
+
+.btn-secondary{
+background:rgba(255,255,255,0.2);
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+
+
+/* ================= MOBILE HERO FIX ================= */
+
+@media (max-width: 768px){
+
+.hero{
+    height:85vh;
+    padding:0 5%;
+    text-align:center;
+}
+
+/* Reduce zoom effect for smoother mobile performance */
+@keyframes slideShow{
+    0%{opacity:0; transform:scale(1);}
+    5%{opacity:1;}
+    20%{opacity:1; transform:scale(1.02);}
+    25%{opacity:0;}
+    100%{opacity:0;}
+}
+
+.hero-content{
+    max-width:100%;
+}
+
+.hero-content h1{
+    font-size:36px;
+    line-height:1.2;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+/* Stack buttons vertically */
+.btn{
+    display:block;
+    width:80%;
+    margin:10px auto;
+    padding:12px 20px;
+    font-size:15px;
+}
+
+}
+
+/* ================= SECTION DEFAULT ================= */
+
+section{
+padding:120px 8%;
+position:relative;
+}
+
+/* ================= CORE STRENGTHS (UPDATED ONLY THIS) ================= */
+
+.core-strengths{
+background:url("{% static 'images/background.jpg' %}") center/cover no-repeat;
+position:relative;
+color:white;
+}
+
+.core-strengths::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.75));
+z-index:0;
+}
+
+.core-strengths .section-title,
+.core-strengths .features{
+position:relative;
+z-index:2;
+}
+
+.core-strengths .section-title h2{
+font-size:44px;
+font-weight:800;
+background:linear-gradient(90deg,#ffffff,#93c5fd,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 25px rgba(147,197,253,0.6);
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+}
+
+.feature-card{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(12px);
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.4);
+transition:0.4s;
+}
+
+.feature-card:hover{
+transform:translateY(-15px);
+box-shadow:0 30px 80px rgba(147,197,253,0.5);
+}
+
+.feature-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.feature-card:hover img{
+transform:scale(1.08);
+}
+
+.feature-card h4{
+font-size:22px;
+margin:20px 0 10px;
+padding:0 25px;
+color:#ffffff;
+}
+
+.feature-card p{
+padding:0 25px 30px;
+line-height:1.7;
+color:#e2e8f0;
+}
+/* ================= VISION BACKGROUND SECTION ================= */
+
+.vision-section{
+position:relative;
+padding:140px 8%;
+color:white;
+background:url("{% static 'images/background.jpg' %}") center/cover no-repeat;
+overflow:hidden;
+}
+
+/* Dark overlay */
+.vision-section::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+z-index:0;
+}
+
+.vision-section .section-title{
+position:relative;
+z-index:2;
+text-align:center;
+margin-bottom:70px;
+}
+
+.vision-section .section-title h2{
+font-size:46px;
+font-weight:900;
+background:linear-gradient(90deg,#ffffff,#93c5fd,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Split layout */
+
+.vision-section .split{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+/* Image style */
+
+.vision-img{
+width:100%;
+height:450px;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 30px 80px rgba(0,0,0,0.6);
+transition:0.5s;
+}
+
+.vision-img:hover{
+transform:scale(1.05);
+}
+
+/* Text styling */
+
+.vision-content h3{
+font-size:30px;
+margin-top:20px;
+margin-bottom:15px;
+font-weight:800;
+background:linear-gradient(90deg,#93c5fd,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+transition:0.3s;
+}
+
+.vision-content h3:hover{
+letter-spacing:1px;
+}
+
+.vision-content p{
+font-size:17px;
+line-height:1.8;
+color:#e2e8f0;
+margin-bottom:25px;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+.vision-section .split{
+grid-template-columns:1fr;
+}
+.vision-img{
+height:300px;
+}
+}
+
+/* ================= FACILITIES SECTION PREMIUM ================= */
+
+.facilities-section{
+position:relative;
+padding:120px 8%;
+background:url("{% static 'images/classroomhd.jpg' %}") center/cover no-repeat;
+color:white;
+overflow:hidden;
+}
+
+/* Dark overlay for readability */
+.facilities-section::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(30,58,138,0.85));
+z-index:0;
+}
+
+/* Keep content above overlay */
+.facilities-section .section-title,
+.facilities-section .facilities{
+position:relative;
+z-index:2;
+}
+
+/* Section Title */
+.facilities-section .section-title h2{
+font-size:46px;
+font-weight:900;
+text-align:center;
+margin-bottom:70px;
+background:linear-gradient(90deg,#ffffff,#93c5fd,#c4b5fd);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+letter-spacing:1px;
+}
+
+/* Grid */
+.facilities{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+}
+
+/* Glass Card */
+.facility-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(14px);
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 25px 60px rgba(0,0,0,0.4);
+transition:0.4s ease;
+border:1px solid rgba(255,255,255,0.15);
+}
+
+.facility-card:hover{
+transform:translateY(-15px) scale(1.02);
+box-shadow:0 35px 80px rgba(37,99,235,0.5);
+}
+
+/* Image */
+.facility-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.facility-card:hover img{
+transform:scale(1.08);
+}
+
+/* Text Content */
+.facility-card .content{
+padding:25px;
+text-align:center;
+}
+
+.facility-card h4{
+font-size:22px;
+font-weight:700;
+margin-bottom:12px;
+background:linear-gradient(90deg,#ffffff,#93c5fd);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+transition:0.3s;
+}
+
+.facility-card:hover h4{
+background:linear-gradient(90deg,#c4b5fd,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.facility-card p{
+font-size:15px;
+line-height:1.7;
+color:#e2e8f0;
+}
+
+
+
+
+
+/* ================= ADMISSION POPUP ================= */
+
+.popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:1200px;
+height:700px;
+background:rgba(32, 32, 32, 0.75);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:5000;
+}
+
+.popup-box{
+background:white;
+border-radius:20px;
+max-width:1200px;
+width:1200px;
+padding:30px;
+text-align:center;
+position:relative;
+box-shadow:0 30px 80px rgba(0,0,0,0.4);
+animation:popupFade 0.4s ease;
+}
+
+@keyframes popupFade{
+from{transform:scale(0.8); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+.popup-box img{
+max-width:1200px;
+max-height:700px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.popup-box h3{
+font-size:24px;
+color:#1e3a8a;
+margin-bottom:10px;
+}
+
+.popup-close{
+position:absolute;
+top:15px;
+right:20px;
+font-size:22px;
+cursor:pointer;
+font-weight:bold;
+color:#1e293b;
+}
+
+.popup-close:hover{
+color:red;
+}
+
+
+
+
+/* ================= POPUP OVERLAY (FOR BOTH) ================= */
+
+.popup-overlay,
+.notice-popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+/* ================= POPUP BOX ================= */
+
+.popup-box,
+.popup-content{
+    background:white;
+    border-radius:20px;
+    max-width:700px;
+    width:90%;
+    padding:30px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,0.4);
+    animation:popupFade 0.4s ease;
+}
+
+@keyframes popupFade{
+    from{transform:scale(0.8); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+.popup-box img,
+.popup-content img{
+    width:100%;
+    max-height:400px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+/* Close buttons */
+
+.popup-close,
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+
+
+
+
+
+/* ================= NOTICE SECTION WITH BACKGROUND ================= */
+
+.notice-section{
+    padding:120px 8%;
+    position:relative;
+    background:url("{% static 'images/Noticeboard.png' %}") center/cover no-repeat;
+    color:white;
+    overflow:hidden;
+}
+
+/* Dark overlay for readability */
+.notice-section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+    z-index:0;
+}
+
+.notice-title{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:50px;
+    background:linear-gradient(90deg,#ffffff,#93c5fd);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.notice-container{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    margin:auto;
+    height:350px;
+    overflow:hidden;
+}
+
+.notice-scroll{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+    animation:scrollNotice 25s linear infinite;
+}
+
+.notice-item{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+.notice-heading{
+    font-size:18px;
+    font-weight:700;
+    display:block;
+    margin-bottom:10px;
+}
+
+.notice-item a{
+    display:inline-block;
+    margin-top:10px;
+    color:#93c5fd;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.notice-item a:hover{
+    color:#ffffff;
+}
+
+@keyframes scrollNotice{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-50%);}
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 380px;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    z-index: 9999;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 12px;
+    padding: 10px;
+    transition: 0.3s ease;
+}
+
+.dropdown-item-link:hover {
+    background: #f2f2f2;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.dropdown-item h4 {
+    margin: 0;
+    color: #f4a300;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dropdown-item p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #777;
+}
+
+
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<nav>
+<div class="logo">
+<img src="{% static 'images/logo.png' %}" alt="School Logo">
+<div>
+<strong>Saraswoti English Boarding School</strong><br>
+<span class="slogan">Learning with Love, Growing with Confidence</span>
+</div>
+</div>
+
+<ul>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<li><a href="/">Home</a></li>
+<li><a href="/about/">About</a></li>
+
+<!-- ACADEMICS -->
+<li class="dropdown">
+    <a href="/academics/">Academics ▾</a>
+
+    <div class="dropdown-content">
+
+        <a href="{% url 'preschool' %}" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">🎨</div>
+                <div>
+                    <h4>Pre-Primary School</h4>
+                    <p>Ages 3 to 5</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/primary/" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">📘</div>
+                <div>
+                    <h4>Primary School</h4>
+                    <p>Grades 1 to 5</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/secondary/" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">🎓</div>
+                <div>
+                    <h4>Secondary School</h4>
+                    <p>Grades 6 to 10</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/learning-approach/" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">💡</div>
+                <div>
+                    <h4>Learning Approach</h4>
+                    <p>Practical, hands-on, real-world exploration.</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</li>
+
+
+<!-- GROWTH BEYOND GRADES -->
+<li class="dropdown">
+    <a href="#">Growth Beyond Grades ▾</a>
+
+    <div class="dropdown-content">
+
+        <a href="{% url 'student_clubs' %}" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">🏆</div>
+                <div>
+                    <h4>Student Leadership & Clubs</h4>
+                    <p>Creativity & leadership development.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{% url 'house_activities' %}" class="dropdown-item-link">
+            <div class="dropdown-item">
+                <div class="icon-circle">🏅</div>
+                <div>
+                    <h4>House System & Competitions</h4>
+                    <p>Healthy competition & teamwork.</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</li>
+
+<li><a href="/gallery/">Gallery</a></li>
+<li><a href="/contact/">Contact</a></li>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+<div class="hero-content">
+<h1>Welcome to Saraswoti English Boarding School</h1>
+<p>Empowering students to achieve excellence in academics and beyond.</p>
+<a href="{% url 'academics' %}" class="btn">Explore Academics</a>
+<a href="{% url 'admission' %}" class="btn btn-secondary">
+    Admission Open
+</a>
+
+</div>
+</section>
+
+<!-- CORE STRENGTHS -->
+<section class="core-strengths">
+<div class="section-title">
+<h2>Our Core Strengths</h2>
+</div>
+<div class="features">
+<div class="feature-card">
+<img src="{% static 'images/school8.jpeg' %}">
+<h4>Quality Education</h4>
+<p>Delivering strong academic foundation with modern teaching practices.</p>
+</div>
+<div class="feature-card">
+<img src="{% static 'images/school9.jpeg' %}">
+<h4>Holistic Development</h4>
+<p>Focusing on character building, leadership and creativity.</p>
+</div>
+<div class="feature-card">
+<img src="{% static 'images/school10.jpeg' %}">
+<h4>Safe Environment</h4>
+<p>Providing secure, disciplined and caring learning atmosphere.</p>
+</div>
+</div>
+</section>
+<!-- VISION & MISSION -->
+
+<!-- VISION & MISSION -->  
+<section class="vision-section">
+
+<div class="section-title">
+<h2>Vision & Mission</h2>
+</div>
+
+<div class="split">
+<img src="{% static 'images/school11.jpeg' %}" class="vision-img">
+
+<div class="vision-content">
+
+<h3>Our Vision</h3>
+<p>
+Our vision is to become a leading and progressive educational institution that inspires excellence, integrity, and innovation. 
+We aim to nurture confident learners who are academically strong and morally responsible. 
+We envision a learning community where creativity, critical thinking, and collaboration are encouraged. 
+Our goal is to prepare students to meet global challenges with courage and competence. 
+We strive to create future leaders who contribute positively to society and the nation. 
+Through continuous improvement and dedication, we seek to shape a brighter tomorrow for every child.
+</p>
+
+<h3>Our Mission</h3>
+<p>
+Our mission is to provide quality education that balances academic excellence with character development. 
+We are committed to delivering student-centered learning through modern teaching methodologies and technology integration. 
+We promote discipline, respect, and lifelong learning habits among our students. 
+Our teachers foster creativity, leadership, and problem-solving skills in a supportive environment. 
+We believe in strong collaboration between school and parents for student success. 
+By nurturing individual potential, we empower learners to achieve their fullest capabilities.
+</p>
+
+<h3>Our Statement</h3>
+<p>
+We are dedicated to building responsible, confident, and compassionate citizens. 
+Our institution stands for integrity, inclusiveness, and excellence in all areas of education. 
+We create a safe and inspiring environment where students feel valued and motivated. 
+We uphold high academic standards while encouraging innovation and exploration. 
+Our commitment is to holistic development — intellectual, emotional, social, and physical growth. 
+Together, we strive to shape future-ready leaders who serve with knowledge and character.
+</p>
+
+</div>
+</div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities-section">
+<div class="section-title">
+<h2>Our Facilities</h2>
+</div>
+
+<div class="facilities">
+
+<div class="facility-card">
+<img src="{% static 'images/smartclass.jpeg' %}">
+<div class="content">
+<h4>Smart Class</h4>
+<p>Interactive digital classrooms enhancing learning experience.</p>
+</div>
+</div>
+
+<div class="facility-card">
+<img src="{% static 'images/Science.png' %}">
+<div class="content">
+<h4>Modern Science Lab</h4>
+<p>Advanced practical learning environment for science students.</p>
+</div>
+</div>
+
+<div class="facility-card">
+<img src="{% static 'images/library.png' %}">
+<div class="content">
+<h4>Library</h4>
+<p>Well-stocked library promoting reading and research culture.</p>
+</div>
+</div>
+
+<div class="facility-card">
+<img src="{% static 'images/playground.png' %}">
+<div class="content">
+<h4>Playground & Greenery</h4>
+<p>Healthy outdoor environment encouraging physical growth.</p>
+</div>
+</div>
+
+<div class="facility-card">
+<img src="{% static 'images/ict.png' %}">
+<div class="content">
+<h4>ICT & Computer Lab</h4>
+<p>Internet-enabled computer labs for digital education.</p>
+</div>
+</div>
+
+<div class="facility-card">
+<img src="{% static 'images/robotics.png' %}">
+<div class="content">
+<h4>Robotics Training</h4>
+<p>Future-ready robotics and innovation programs.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+<!-- NOTICE SECTION -->
+<section class="notice-section">
+
+<h2 class="notice-title">
+Latest Notices
+</h2>
+
+<div class="notice-container">
+
+<div class="notice-scroll">
+
+{% for notice in notices %}
+<div class="notice-item">
+
+<strong class="notice-heading">
+    {{ notice.title }}
+</strong>
+
+<p>
+    {{ notice.description|truncatewords:20 }}
+</p>
+
+{% if notice.notice_file %}
+    <a href="{{ notice.notice_file.url }}" target="_blank">
+       Read More →
+    </a>
+
+{% elif notice.notice_image %}
+    <a href="{{ notice.notice_image.url }}" target="_blank">
+       View Notice →
+    </a>
+
+{% else %}
+    <span style="opacity:0.7;">No attachment available</span>
+{% endif %}
+
+</div>
+
+{% empty %}
+<div class="notice-item">
+No notices available at the moment.
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+{% include 'school/career.html' %}
+
+
+</body>
+
+
+<!-- ================= ADMISSION POPUP ================= -->
+{% if admission_settings and admission_settings.admission_open %}
+<div class="popup-overlay" id="admissionPopup">
+    <div class="popup-box">
+
+        <div class="popup-close" onclick="closePopup()">✖</div>
+
+        {% if admission_settings.popup_image %}
+        <img src="{{ admission_settings.popup_image.url }}" alt="Admission Open">
+        {% endif %}
+
+        {% if admission_settings.popup_message %}
+        <h3>{{ admission_settings.popup_message }}</h3>
+        {% endif %}
+
+        <a href="{% url 'admission' %}" class="btn btn-primary" style="margin-top:15px;">
+            Apply Now
+        </a>
+
+    </div>
+</div>
+{% endif %}
+
+
+<!-- ================= NOTICE POPUP ================= -->
+{% if popup_notice %}
+<div id="noticePopup" class="notice-popup">
+    <div class="popup-content">
+
+        <span class="close-btn" onclick="closeNotice()">×</span>
+
+        <h2>{{ popup_notice.title }}</h2>
+
+        {% if popup_notice.notice_image %}
+        <img src="{{ popup_notice.notice_image.url }}" 
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+        {% endif %}
+
+        {% if popup_notice.notice_file %}
+        <a href="{{ popup_notice.notice_file.url }}" target="_blank"
+           style="display:inline-block; margin-bottom:15px; color:#2563eb; font-weight:600;">
+           Open Attached File
+        </a>
+        {% endif %}
+
+        <p>{{ popup_notice.description }}</p>
+
+    </div>
+</div>
+{% endif %}
+
+
+<script>
+function closePopup(){
+    var popup = document.getElementById("admissionPopup");
+    if(popup){
+        popup.style.display = "none";
+    }
+}
+
+function closeNotice(){
+    var notice = document.getElementById("noticePopup");
+    if(notice){
+        notice.style.display = "none";
+    }
+}
+
+function toggleMenu(){
+    const menu = document.querySelector("nav ul");
+    menu.classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+</html>

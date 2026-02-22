@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gallery | Saraswoti English Boarding School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body{
+    font-family:Poppins;
+    background:#f4f7fb;
+    margin:0;
+}
+
+nav{
+    background:#0f3d91;
+    padding:15px;
+    color:white;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+h1{
+    text-align:center;
+    padding:40px 0;
+    color:#0f3d91;
+}
+
+.gallery{
+    padding:60px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.gallery-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery-card:hover img{
+    transform:scale(1.1);
+}
+
+.overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+    color:white;
+    padding:15px;
+    font-size:14px;
+}
+
+.empty-message{
+    text-align:center;
+    padding:50px;
+    color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="{% url 'home' %}">← Back to Home</a>
+</nav>
+
+<h1>School Gallery</h1>
+
+<div class="gallery">
+
+{% if images %}
+    {% for img in images %}
+        <div class="gallery-card">
+            <img src="{{ img.image.url }}">
+            {% if img.title %}
+            <div class="overlay">
+                {{ img.title }}
+            </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="empty-message">
+        No images uploaded yet.
+    </div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
