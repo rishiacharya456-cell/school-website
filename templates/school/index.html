@@ -1216,8 +1216,218 @@ function toggleMenu(){
 }
 
 </script>
+{% if game_active %}
+<div id="gamePopup" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+font-family:Arial;
+text-align:center;
+">
 
-</body>
+<h1 style="font-size:40px;">🎉 Holi Event 2082 🎉</h1>
+<h2 id="roundTitle">{{ prize_round }} Prize Draw</h2>
+
+<div style="position:relative;width:500px;height:500px;margin:30px 0;">
+    <div style="
+        position:absolute;
+        left:50%;
+        top:-12px;
+        transform:translateX(-50%);
+        width:0;
+        height:0;
+        border-left:22px solid transparent;
+        border-right:22px solid transparent;
+        border-top:38px solid white;
+        z-index:5;
+    "></div>
+
+    <canvas id="wheelCanvas" width="500" height="500"></canvas>
+</div>
+
+<div style="font-size:60px;letter-spacing:15px;margin:20px 0;" id="digitDisplay">
+    _ _ _ _ _ _
+</div>
+
+<button onclick="spinOneDigit()" id="spinBtn" style="
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:yellow;
+font-weight:bold;
+cursor:pointer;
+">
+SPIN
+</button>
+
+<div id="finalMessage" style="margin-top:30px;font-size:28px;display:none;"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const winningNumber = "{{ winning_number }}";
+const prizeRound = "{{ prize_round }}";
+
+const canvas = document.getElementById("wheelCanvas");
+const ctx = canvas.getContext("2d");
+
+const centerX = 250;
+const centerY = 250;
+const radius = 240;
+const total = characters.length;
+const sliceAngle = (2 * Math.PI) / total;
+
+let currentRotation = 0;
+let digitIndex = 0;
+let display = ["_","_","_","_","_","_"];
+let spinning = false;
+
+/* Draw wheel */
+function drawWheel(rotation){
+    ctx.clearRect(0,0,500,500);
+
+    for(let i=0;i<total;i++){
+
+        let startAngle = rotation + (i * sliceAngle) - Math.PI/2;
+        let endAngle = startAngle + sliceAngle;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.fillStyle = i % 2 === 0 ? "#ff9f1c" : "#6a4cff";
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(startAngle + sliceAngle/2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "white";
+        ctx.font = "bold 18px Arial";
+        ctx.fillText(characters[i], radius - 20, 5);
+        ctx.restore();
+    }
+}
+
+drawWheel(0);
+
+/* Spin logic */
+function spinOneDigit(){
+
+    if(spinning) return;
+    if(digitIndex >= 6) return;
+
+    if(!winningNumber){
+        alert("No winning number selected.");
+        return;
+    }
+
+    spinning = true;
+
+    let targetChar = winningNumber[digitIndex];
+    let targetIndex = characters.indexOf(targetChar);
+
+    let targetCenterAngle =
+        - (targetIndex * sliceAngle) - (sliceAngle / 2);
+
+    let fullSpins = Math.PI * 2 * 12;
+
+    let startRotation = currentRotation;
+    let normalizedCurrent = currentRotation % (Math.PI * 2);
+
+    let endRotation =
+        currentRotation +
+        fullSpins +
+        (targetCenterAngle - normalizedCurrent);
+
+    let startTime = null;
+    let duration = 20000;
+
+    function animate(timestamp){
+
+        if(!startTime) startTime = timestamp;
+
+        let progress = timestamp - startTime;
+        let t = progress / duration;
+        if(t > 1) t = 1;
+
+        let ease = 1 - Math.pow(1 - t, 3);
+
+        let rotation =
+            startRotation + (endRotation - startRotation) * ease;
+
+        drawWheel(rotation);
+
+        if(progress < duration){
+            requestAnimationFrame(animate);
+        } else {
+
+            currentRotation = endRotation;
+            drawWheel(currentRotation);
+
+            display[digitIndex] = targetChar;
+            document.getElementById("digitDisplay").innerHTML =
+                display.join(" ");
+
+            digitIndex++;
+            spinning = false;
+
+            if(digitIndex === 6){
+                showFinalMessage();
+            }
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+/* Show congratulations and auto switch round */
+function showFinalMessage(){
+
+    confetti({
+        particleCount:600,
+        spread:200,
+        origin:{y:0.6}
+    });
+
+    document.getElementById("spinBtn").style.display = "none";
+
+    document.getElementById("finalMessage").style.display = "block";
+    document.getElementById("finalMessage").innerHTML =
+        `🎉 Congratulations! <br><br>
+        Lucky Number ${winningNumber} <br><br>
+        You are the <b>${prizeRound} Prize Winner</b> <br>
+        of Holi Event 2082 <br>
+        Organized by IT Club Students`;
+
+    setTimeout(() => {
+
+        if(prizeRound === "FIRST"){
+            window.location.href = "/round/SECOND/";
+        }
+        else if(prizeRound === "SECOND"){
+            window.location.href = "/round/THIRD/";
+        }
+        else{
+            document.getElementById("roundTitle").innerHTML = "🎉 Event Completed 🎉";
+        }
+
+    }, 8000);
+}
+</script>
+{% endif %}
 </html>
 
 

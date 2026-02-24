@@ -232,3 +232,34 @@ class PrimaryEvent(models.Model):
 
 
 
+from django.db import models
+
+
+class GameControl(models.Model):
+    is_active = models.BooleanField(default=False)
+    current_round = models.CharField(
+        max_length=10,
+        default="FIRST"
+    )
+
+
+class Ticket(models.Model):
+    ticket_number = models.CharField(max_length=10, unique=True)
+
+    PRIZE_CHOICES = [
+        ("FIRST", "First Prize"),
+        ("SECOND", "Second Prize"),
+        ("THIRD", "Third Prize"),
+        ("NONE", "None"),
+    ]
+
+    prize_type = models.CharField(
+        max_length=10,
+        choices=PRIZE_CHOICES,
+        default="NONE"
+    )
+
+    has_won = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.ticket_number

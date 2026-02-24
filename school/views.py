@@ -457,3 +457,113 @@ def sports(request):
 def arts_culture(request):
     return render(request, "school/arts_culture.html")
 
+
+from django.shortcuts import render, redirect
+from .models import Ticket, GameControl
+import random
+
+from django.shortcuts import render, redirect
+from .models import Ticket, GameControl
+import random
+
+def home(request):
+    game = GameControl.objects.first()
+    winning_number = ""
+    prize_round = ""
+
+    if game and game.is_active:
+
+        prize_round = game.current_round
+
+        # Check if winner already selected in session
+        if not request.session.get("current_winner"):
+
+            # 1️⃣ Check manual winner for this round
+            manual = Ticket.objects.filter(
+                prize_type=prize_round,
+                has_won=False
+            ).first()
+
+            if manual:
+                winner = manual
+            else:
+                # 2️⃣ System auto select from unused tickets
+                available = Ticket.objects.filter(has_won=False)
+
+                if available.exists():
+                    winner = random.choice(list(available))
+                else:
+                    winner = None
+
+            if winner:
+                winner.has_won = True
+                winner.save()
+                request.session["current_winner"] = winner.ticket_number
+                winning_number = winner.ticket_number
+
+        else:
+            winning_number = request.session.get("current_winner")
+
+    context = {
+        "game_active": game.is_active if game else False,
+        "winning_number": winning_number,
+        "prize_round": prize_round
+    }
+
+    return render(request, "school/index.html", context)
+
+def toggle_game(request):
+    game, created = GameControl.objects.get_or_create(id=1)
+
+    if game.is_active:
+        # 🔴 Closing the game
+        game.is_active = False
+
+        # Clear session winner
+        request.session.pop("current_winner", None)
+
+        # Reset all tickets winner flag
+        Ticket.objects.update(is_winner=False)
+
+    else:
+        # 🟢 Starting the game
+        game.is_active = True
+
+    game.save()
+
+    return redirect("home")
+
+
+from django.shortcuts import redirect
+from .models import GameControl
+
+def toggle_game(request):
+    game, created = GameControl.objects.get_or_create(id=1)
+
+    if game.is_active:
+        # Closing the game
+        game.is_active = False
+        game.winner_selected = False
+        request.session.flush()
+    else:
+        # Activating the game
+        game.is_active = True
+
+    game.save()
+    return redirect("home")
+
+
+
+
+# 🔥 ADD THIS FUNCTION HERE
+def set_round(request, round_name):
+    game, created = GameControl.objects.get_or_create(id=1)
+
+    game.current_round = round_name
+
+    # Reset winner for new round
+    request.session.pop("current_winner", None)
+
+    game.save()
+
+    return redirect("home")

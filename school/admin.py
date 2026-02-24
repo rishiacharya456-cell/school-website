@@ -159,3 +159,10 @@ class PrimaryEventAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     list_filter = ('date',)
 
+
+
+from django.contrib import admin
+from .models import Ticket, GameControl
+
+admin.site.register(Ticket)
+admin.site.register(GameControl)

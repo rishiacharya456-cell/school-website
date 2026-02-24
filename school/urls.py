@@ -21,7 +21,8 @@ urlpatterns = [
       path('learning-approach/', views.learning_approach, name='learning_approach'),
       path("student-clubs/", views.student_clubs, name="student_clubs"),
     path("house-activities/", views.house_activities, name="house_activities"),
-    
+    path("toggle-game/", views.toggle_game, name="toggle_game"),
+    path("round/<str:round_name>/", views.set_round, name="set_round"),
 
 
  
