@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from .views import login_options
+from .views import teacher_login, teacher_logout,teacher_signup, teacher_dashboard, change_password, create_lesson_plan
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -21,9 +23,20 @@ urlpatterns = [
       path('learning-approach/', views.learning_approach, name='learning_approach'),
       path("student-clubs/", views.student_clubs, name="student_clubs"),
     path("house-activities/", views.house_activities, name="house_activities"),
-    path("toggle-game/", views.toggle_game, name="toggle_game"),
-    path("round/<str:round_name>/", views.set_round, name="set_round"),
-
+    path("generate-print/<int:count>/", views.generate_and_print_tickets, name="generate_print"),
+    path('login/', login_options, name='login_options'),
+    path('teacher/login/', teacher_login, name='teacher_login'),
+    path('teacher/logout/', teacher_logout, name='teacher_logout'),
+    path('teacher/login/', teacher_login, name='teacher_login'),
+    path('teacher/signup/', teacher_signup, name='teacher_signup'),
+    path('teacher/dashboard/', teacher_dashboard, name='teacher_dashboard'),
+    path('teacher/change-password/', change_password, name='change_password'),
+    path('teacher/signup/', teacher_signup, name='teacher_signup'),
+     path('teacher/lesson-plan/', create_lesson_plan, name='lesson_plan'),
+     path("verify-claim/", views.verify_ticket_claim, name="verify_claim"),
+    path("start-game/", views.start_game_session, name="start_game"),
+    path("spin/", views.controlled_spin, name="controlled_spin"),
+    path("spin-history/", views.spin_history, name="spin_history"),
 
  
 ]
